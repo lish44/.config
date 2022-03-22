@@ -5,6 +5,7 @@ local proto     = require 'proto'
 local define    = require 'proto.define'
 local config    = require 'config'
 local converter = require 'proto.converter'
+local json      = require 'json-beautify'
 
 local m = {}
 
@@ -40,6 +41,10 @@ function m.getOption(name)
 end
 
 function m.getAbility(name)
+    if not m.info
+    or not m.info.capabilities then
+        return nil
+    end
     local current = m.info.capabilities
     while true do
         local parent, nextPos = name:match '^([^%.]+)()'
@@ -57,6 +62,23 @@ function m.getAbility(name)
         end
     end
     return current
+end
+
+function m.getOffsetEncoding()
+    if m._offsetEncoding then
+        return m._offsetEncoding
+    end
+    local clientEncodings = m.getAbility 'offsetEncoding'
+    if type(clientEncodings) == 'table' then
+        for _, encoding in ipairs(clientEncodings) do
+            if encoding == 'utf-8' then
+                m._offsetEncoding = 'utf-8'
+                return m._offsetEncoding
+            end
+        end
+    end
+    m._offsetEncoding = 'utf-16'
+    return m._offsetEncoding
 end
 
 local function packMessage(...)
@@ -88,6 +110,7 @@ end
 ---@param titles  string[]
 ---@return string action
 ---@return integer index
+---@async
 function m.awaitRequestMessage(type, message, titles)
     proto.notify('window/logMessage', {
         type = define.MessageType[type] or 3,
@@ -163,6 +186,88 @@ end
 ---@field isGlobal? boolean
 ---@field uri?      uri
 
+---@param cfg table
+---@param changes config.change[]
+local function applyConfig(cfg, changes)
+    for _, change in ipairs(changes) do
+        cfg[change.key] = config.getRaw(change.key)
+    end
+end
+
+local function tryModifySpecifiedConfig(finalChanges)
+    if #finalChanges == 0 then
+        return false
+    end
+    local workspace = require 'workspace'
+    local loader    = require 'config.loader'
+    if loader.lastLocalType ~= 'json' then
+        return false
+    end
+    applyConfig(loader.lastLocalConfig, finalChanges)
+    local path = workspace.getAbsolutePath(CONFIGPATH)
+    util.saveFile(path, json.beautify(loader.lastLocalConfig, { indent = '    ' }))
+    return true
+end
+
+local function tryModifyRC(finalChanges, create)
+    if #finalChanges == 0 then
+        return false
+    end
+    local workspace = require 'workspace'
+    local loader    = require 'config.loader'
+    local path = workspace.getAbsolutePath '.luarc.json'
+    if not path then
+        return false
+    end
+    local buf = util.loadFile(path)
+    if not buf and not create then
+        return false
+    end
+    local rc = loader.lastRCConfig or {
+        ['$schema'] = lang.id == 'zh-cn' and [[https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema-zh-cn.json]] or [[https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json]]
+    }
+    applyConfig(rc, finalChanges)
+    util.saveFile(path, json.beautify(rc, { indent = '    ' }))
+    return true
+end
+
+local function tryModifyClient(finalChanges)
+    if #finalChanges == 0 then
+        return false
+    end
+    if not m.getOption 'changeConfiguration' then
+        return false
+    end
+    proto.notify('$/command', {
+        command   = 'lua.config',
+        data      = finalChanges,
+    })
+    return true
+end
+
+---@param finalChanges config.change[]
+local function tryModifyClientGlobal(finalChanges)
+    if #finalChanges == 0 then
+        return
+    end
+    if not m.getOption 'changeConfiguration' then
+        return
+    end
+    local changes = {}
+    for i = #finalChanges, 1, -1 do
+        local change = finalChanges[i]
+        if change.isGlobal then
+            changes[#changes+1] = change
+            finalChanges[i] = finalChanges[#finalChanges]
+            finalChanges[#finalChanges] = nil
+        end
+    end
+    proto.notify('$/command', {
+        command   = 'lua.config',
+        data      = changes,
+    })
+end
+
 ---@param changes config.change[]
 ---@param onlyMemory boolean
 function m.setConfig(changes, onlyMemory)
@@ -192,31 +297,19 @@ function m.setConfig(changes, onlyMemory)
     if #finalChanges == 0 then
         return
     end
-    if  m.getOption 'changeConfiguration'
-    and config.getSource() == 'client' then
-        proto.notify('$/command', {
-            command   = 'lua.config',
-            data      = finalChanges,
-        })
-    else
-        local messages = {}
-        if not m.getOption 'changeConfiguration' then
-            messages[1] = lang.script('WINDOW_CLIENT_NOT_SUPPORT_CONFIG')
-        elseif config.getSource() ~= 'client' then
-            messages[1] = lang.script('WINDOW_LCONFIG_NOT_SUPPORT_CONFIG')
+    xpcall(function ()
+        tryModifyClientGlobal(finalChanges)
+        if tryModifySpecifiedConfig(finalChanges) then
+            return
         end
-        for _, change in ipairs(finalChanges) do
-            if change.action == 'add' then
-                messages[#messages+1] = lang.script('WINDOW_MANUAL_CONFIG_ADD', change)
-            elseif change.action == 'set' then
-                messages[#messages+1] = lang.script('WINDOW_MANUAL_CONFIG_SET', change)
-            elseif change.action == 'prop' then
-                messages[#messages+1] = lang.script('WINDOW_MANUAL_CONFIG_PROP', change)
-            end
+        if tryModifyRC(finalChanges) then
+            return
         end
-        local message = table.concat(messages, '\n')
-        m.showMessage('Info', message)
-    end
+        if tryModifyClient(finalChanges) then
+            return
+        end
+        tryModifyRC(finalChanges, true)
+    end, log.error)
 end
 
 ---@alias textEditor {start: integer, finish: integer, text: string}
@@ -254,6 +347,7 @@ function m.init(t)
     m.client(t.clientInfo.name)
     nonil.disable()
     lang(LOCALE or t.locale)
+    converter.setOffsetEncoding(m.getOffsetEncoding())
     hookPrint()
 end
 

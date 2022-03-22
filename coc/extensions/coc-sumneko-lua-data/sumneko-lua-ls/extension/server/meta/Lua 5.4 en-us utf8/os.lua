@@ -14,6 +14,7 @@ os = {}
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-os.clock)
 ---
 ---@return number
+---@nodiscard
 function os.clock() end
 
 ---@class osdate
@@ -80,6 +81,7 @@ function os.clock() end
 ---@param format? string
 ---@param time?   integer
 ---@return string|osdate
+---@nodiscard
 function os.date(format, time) end
 
 ---
@@ -90,6 +92,7 @@ function os.date(format, time) end
 ---@param t2 integer
 ---@param t1 integer
 ---@return integer
+---@nodiscard
 function os.difftime(t2, t1) end
 
 ---
@@ -119,6 +122,7 @@ function os.exit(code, close) end
 ---
 ---@param varname string
 ---@return string
+---@nodiscard
 function os.getenv(varname) end
 
 ---
@@ -167,6 +171,7 @@ function os.setlocale(locale, category) end
 ---
 ---@param date? osdate
 ---@return integer
+---@nodiscard
 function os.time(date) end
 
 ---
@@ -175,6 +180,7 @@ function os.time(date) end
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-os.tmpname)
 ---
 ---@return string
+---@nodiscard
 function os.tmpname() end
 
 return os

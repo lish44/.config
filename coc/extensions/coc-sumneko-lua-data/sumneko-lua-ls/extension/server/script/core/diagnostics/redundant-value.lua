@@ -4,13 +4,14 @@ local lang   = require 'language'
 local guide  = require 'parser.guide'
 local await  = require 'await'
 
+---@async
 return function (uri, callback)
     local state = files.getState(uri)
     if not state then
         return
     end
 
-    guide.eachSource(state.ast, function (src)
+    guide.eachSource(state.ast, function (src) ---@async
         await.delay()
         if src.redundant then
             callback {

@@ -18,6 +18,7 @@ string = {}
 ---@param j? integer
 ---@return integer
 ---@return ...
+---@nodiscard
 function string.byte(s, i, j) end
 
 ---
@@ -26,9 +27,10 @@ function string.byte(s, i, j) end
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.char)
 ---
 ---@param byte integer
----@vararg integer
+---@param ... integer
 ---@return string
 ---@return ...
+---@nodiscard
 function string.char(byte, ...) end
 
 ---
@@ -36,9 +38,10 @@ function string.char(byte, ...) end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.dump)
 ---
----@param f      function
+---@param f      async fun()
 ---@param strip? boolean
 ---@return string
+---@nodiscard
 function string.dump(f, strip) end
 
 ---
@@ -53,6 +56,7 @@ function string.dump(f, strip) end
 ---@return integer start
 ---@return integer end
 ---@return ... captured
+---@nodiscard
 function string.find(s, pattern, init, plain) end
 
 ---
@@ -61,8 +65,9 @@ function string.find(s, pattern, init, plain) end
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-string.format)
 ---
 ---@param s string
----@vararg string
+---@param ... string
 ---@return string
+---@nodiscard
 function string.format(s, ...) end
 
 ---
@@ -96,6 +101,7 @@ function string.gmatch(s, pattern, init) end
 ---@param n       integer
 ---@return string
 ---@return integer count
+---@nodiscard
 function string.gsub(s, pattern, repl, n) end
 
 ---
@@ -105,6 +111,7 @@ function string.gsub(s, pattern, repl, n) end
 ---
 ---@param s string
 ---@return integer
+---@nodiscard
 function string.len(s) end
 
 ---
@@ -114,6 +121,7 @@ function string.len(s) end
 ---
 ---@param s string
 ---@return string
+---@nodiscard
 function string.lower(s) end
 
 ---
@@ -125,6 +133,7 @@ function string.lower(s) end
 ---@param pattern string
 ---@param init?   integer
 ---@return string | number captured
+---@nodiscard
 function string.match(s, pattern, init) end
 
 ---@version >5.3
@@ -136,8 +145,9 @@ function string.match(s, pattern, init) end
 ---@param fmt string
 ---@param v1  string
 ---@param v2? string
----@vararg string
+---@param ... string
 ---@return string binary
+---@nodiscard
 function string.pack(fmt, v1, v2, ...) end
 
 ---@version >5.3
@@ -148,6 +158,7 @@ function string.pack(fmt, v1, v2, ...) end
 ---
 ---@param fmt string
 ---@return integer
+---@nodiscard
 function string.packsize(fmt) end
 
 ---
@@ -159,6 +170,7 @@ function string.packsize(fmt) end
 ---@param n    integer
 ---@param sep? string
 ---@return string
+---@nodiscard
 function string.rep(s, n, sep) end
 
 ---
@@ -168,6 +180,7 @@ function string.rep(s, n, sep) end
 ---
 ---@param s string
 ---@return string
+---@nodiscard
 function string.reverse(s) end
 
 ---
@@ -179,6 +192,7 @@ function string.reverse(s) end
 ---@param i  integer
 ---@param j? integer
 ---@return string
+---@nodiscard
 function string.sub(s, i, j) end
 
 ---@version >5.3
@@ -192,6 +206,7 @@ function string.sub(s, i, j) end
 ---@param pos? integer
 ---@return ...
 ---@return integer offset
+---@nodiscard
 function string.unpack(fmt, s, pos) end
 
 ---
@@ -201,6 +216,7 @@ function string.unpack(fmt, s, pos) end
 ---
 ---@param s string
 ---@return string
+---@nodiscard
 function string.upper(s) end
 
 return string

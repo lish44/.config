@@ -41,6 +41,7 @@ function debug.debug() end
 ---
 ---@param o any
 ---@return table
+---@nodiscard
 function debug.getfenv(o) end
 
 ---
@@ -52,6 +53,7 @@ function debug.getfenv(o) end
 ---@return function hook
 ---@return string mask
 ---@return integer count
+---@nodiscard
 function debug.gethook(co) end
 
 ---@alias infowhat string
@@ -71,9 +73,10 @@ function debug.gethook(co) end
 ---
 ---@overload fun(f: integer|function, what?: infowhat):debuginfo
 ---@param thread thread
----@param f      integer|function
+---@param f      integer|async fun()
 ---@param what?  infowhat
 ---@return debuginfo
+---@nodiscard
 function debug.getinfo(thread, f, what) end
 
 ---
@@ -81,12 +84,13 @@ function debug.getinfo(thread, f, what) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-debug.getlocal)
 ---
----@overload fun(f: integer|function, index: integer):string, any
+---@overload fun(f: integer|async fun(), index: integer):string, any
 ---@param thread  thread
----@param f       integer|function
+---@param f       integer|async fun()
 ---@param index   integer
 ---@return string name
 ---@return any    value
+---@nodiscard
 function debug.getlocal(thread, f, index) end
 
 ---
@@ -96,6 +100,7 @@ function debug.getlocal(thread, f, index) end
 ---
 ---@param object any
 ---@return table metatable
+---@nodiscard
 function debug.getmetatable(object) end
 
 ---
@@ -104,6 +109,7 @@ function debug.getmetatable(object) end
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-debug.getregistry)
 ---
 ---@return table
+---@nodiscard
 function debug.getregistry() end
 
 ---
@@ -111,10 +117,11 @@ function debug.getregistry() end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-debug.getupvalue)
 ---
----@param f  function
+---@param f  async fun()
 ---@param up integer
 ---@return string name
 ---@return any    value
+---@nodiscard
 function debug.getupvalue(f, up) end
 
 ---
@@ -126,6 +133,7 @@ function debug.getupvalue(f, up) end
 ---@param n integer
 ---@return any
 ---@return boolean
+---@nodiscard
 function debug.getuservalue(u, n) end
 
 ---
@@ -167,7 +175,7 @@ function debug.setfenv(object, env) end
 ---
 ---@overload fun(hook: function, mask: hookmask, count?: integer)
 ---@param thread thread
----@param hook   function
+---@param hook   async fun()
 ---@param mask   hookmask
 ---@param count? integer
 function debug.sethook(thread, hook, mask, count) end
@@ -201,7 +209,7 @@ function debug.setmetatable(value, meta) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-debug.setupvalue)
 ---
----@param f     function
+---@param f     async fun()
 ---@param up    integer
 ---@param value any
 ---@return string name
@@ -228,6 +236,7 @@ function debug.setuservalue(udata, value, n) end
 ---@param message? any
 ---@param level?   integer
 ---@return string  message
+---@nodiscard
 function debug.traceback(thread, message, level) end
 
 ---@version >5.2, JIT
@@ -236,9 +245,10 @@ function debug.traceback(thread, message, level) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-debug.upvalueid)
 ---
----@param f function
+---@param f async fun()
 ---@param n integer
 ---@return lightuserdata id
+---@nodiscard
 function debug.upvalueid(f, n) end
 
 ---@version >5.2, JIT
@@ -247,9 +257,9 @@ function debug.upvalueid(f, n) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-debug.upvaluejoin)
 ---
----@param f1 function
+---@param f1 async fun()
 ---@param n1 integer
----@param f2 function
+---@param f2 async fun()
 ---@param n2 integer
 function debug.upvaluejoin(f1, n1, f2, n2) end
 

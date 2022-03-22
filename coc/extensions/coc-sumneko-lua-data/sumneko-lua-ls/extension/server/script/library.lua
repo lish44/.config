@@ -236,7 +236,7 @@ local function initBuiltIn()
         local metaDoc = compileSingleMetaDoc(fsu.loadFile(libPath), metaLang, status)
         if metaDoc then
             local outPath = metaPath / libName
-            encoder.encode(encoding, metaDoc)
+            metaDoc = encoder.encode(encoding, metaDoc, 'auto')
             out:saveFile(libName, metaDoc)
             m.metaPaths[#m.metaPaths+1] = outPath:string()
         end
@@ -341,6 +341,7 @@ local function apply3rd(cfg, onlyMemory)
 end
 
 local hasAsked
+---@async
 local function askFor3rd(cfg)
     hasAsked = true
     local yes1 = lang.script.WINDOW_APPLY_WHIT_SETTING
@@ -395,7 +396,7 @@ local function check3rdByWords(text, configs)
     if hasAsked then
         return
     end
-    await.call(function ()
+    await.call(function () ---@async
         for _, cfg in ipairs(configs) do
             if cfg.words then
                 for _, word in ipairs(cfg.words) do
@@ -419,7 +420,7 @@ local function check3rdByFileName(uri, configs)
     if not path then
         return
     end
-    await.call(function ()
+    await.call(function () ---@async
         for _, cfg in ipairs(configs) do
             if cfg.files then
                 for _, filename in ipairs(cfg.files) do

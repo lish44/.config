@@ -92,6 +92,7 @@ package.searchers = {}
 ---@param rep? string
 ---@return string? filename
 ---@return string? errmsg
+---@nodiscard
 function package.searchpath(name, path, sep, rep) end
 
 ---

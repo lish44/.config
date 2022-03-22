@@ -17,6 +17,7 @@ local next         = next
 local error        = error
 local type         = type
 local setmetatable = setmetatable
+local ipairs       = ipairs
 local tconcat      = table.concat
 local ssub         = string.sub
 local sfind        = string.find
@@ -774,8 +775,25 @@ function m.searchRefsByID(status, suri, expect, mode)
         local crossed = {}
         if mode == 'def'
         or mode == 'alldef'
-        or field then
+        or field
+        or hasCall(field) then
             for _, guri in ceach('def:' .. id) do
+                if uri == guri then
+                    goto CONTINUE
+                end
+                searchID(guri, id, field, uri)
+                ::CONTINUE::
+            end
+        elseif mode == 'field'
+        or     mode == 'allfield' then
+            for _, guri in ceach('def:' .. id) do
+                if uri == guri then
+                    goto CONTINUE
+                end
+                searchID(guri, id, field, uri)
+                ::CONTINUE::
+            end
+            for _, guri in ceach('field:' .. id) do
                 if uri == guri then
                     goto CONTINUE
                 end
@@ -850,7 +868,6 @@ function m.searchRefsByID(status, suri, expect, mode)
     local function searchNode(uri, id, field)
         local noders = nodersMap[uri]
         local call   = noders.call[id]
-        local global = isGlobalID(id)
         callStack[#callStack+1] = call
 
         if field == nil and not ignoredSources[id] then
@@ -865,8 +882,8 @@ function m.searchRefsByID(status, suri, expect, mode)
             checkRequire(uri, requireName, field)
         end
 
-        local elock = global and elockMap['@global'] or elockMap[uri]
-        local ecall = global and ecallMap['@global'] or ecallMap[uri]
+        local elock = elockMap[uri]
+        local ecall = ecallMap[uri]
 
         if lockExpanding(elock, ecall, id, field) then
             if noders.forward[id] then
@@ -976,6 +993,22 @@ local function prepareSearch(source)
     end
     local uri  = getUri(source)
     local id   = getID(source)
+    -- return function
+    if source.type == 'function' and source.parent.type == 'return' then
+        local func = guide.getParentFunction(source)
+        if func.type == 'function' then
+            for index, rtn in ipairs(source.parent) do
+                if rtn == source then
+                    id = sformat('%s%s%s'
+                        , getID(func)
+                        , RETURN_INDEX
+                        , index
+                    )
+                    break
+                end
+            end
+        end
+    end
     return uri, id
 end
 

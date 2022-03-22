@@ -8,11 +8,14 @@ local RENAME = 1 << 1
 local function exists(filename)
     local path = fs.path(filename)
     local suc, res = pcall(fs.exists, path)
-    if suc and res then
-        return true
-    else
+    if not suc or not res then
         return false
     end
+    suc, res = pcall(fs.canonical, path)
+    if not suc or res:string() ~= path:string() then
+        return false
+    end
+    return true
 end
 
 ---@class filewatch
@@ -27,6 +30,7 @@ function m.watch(path)
     end
 end
 
+---@param callback async fun()
 function m.event(callback)
     m._eventList[#m._eventList+1] = callback
 end

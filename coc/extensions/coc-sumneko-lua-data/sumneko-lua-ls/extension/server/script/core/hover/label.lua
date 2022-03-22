@@ -16,7 +16,11 @@ local function asFunction(source, oop)
     local arg   = buildArg(source, oop)
     local rtn   = buildReturn(source)
     local lines = {}
-    lines[1] = ('%s %s(%s)'):format(oop and 'method' or 'function', name or '', arg)
+    lines[1] = ('%s%s %s(%s)'):format(
+        vm.isAsync(source) and 'async ' or '',
+        oop and 'method' or 'function',
+        name or '', arg
+    )
     lines[2] = rtn
     return table.concat(lines, '\n')
 end
@@ -44,6 +48,7 @@ local function asDocTypeName(source)
     end
 end
 
+---@async
 local function asValue(source, title)
     local name    = buildName(source, false) or ''
     local type    = infer.searchAndViewInfers(source)
@@ -59,6 +64,9 @@ local function asValue(source, title)
     local pack = {}
     pack[#pack+1] = title
     pack[#pack+1] = name .. ':'
+    if vm.isAsync(source, true) then
+        pack[#pack+1] = 'async'
+    end
     if  cont
     and (  type == 'table'
         or type == 'any'
@@ -76,10 +84,12 @@ local function asValue(source, title)
     return table.concat(pack, ' ')
 end
 
+---@async
 local function asLocal(source)
     return asValue(source, 'local')
 end
 
+---@async
 local function asGlobal(source)
     return asValue(source, 'global')
 end
@@ -111,6 +121,7 @@ local function isGlobalField(source)
     end
 end
 
+---@async
 local function asField(source)
     if isGlobalField(source) then
         return asGlobal(source)
@@ -175,6 +186,7 @@ local function asNumber(source)
     return formatNumber(num)
 end
 
+---@async
 return function (source, oop)
     if source.type == 'function' then
         return asFunction(source, oop)

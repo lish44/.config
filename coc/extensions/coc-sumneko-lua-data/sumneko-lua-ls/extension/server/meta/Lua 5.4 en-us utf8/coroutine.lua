@@ -13,8 +13,9 @@ coroutine = {}
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-coroutine.create)
 ---
----@param f function
+---@param f async fun()
 ---@return thread
+---@nodiscard
 function coroutine.create(f) end
 
 ---
@@ -24,6 +25,7 @@ function coroutine.create(f) end
 ---
 ---@param co? thread
 ---@return boolean
+---@nodiscard
 function coroutine.isyieldable(co) end
 
 ---@version >5.4
@@ -56,6 +58,7 @@ function coroutine.resume(co, val1, ...) end
 ---
 ---@return thread running
 ---@return boolean ismain
+---@nodiscard
 function coroutine.running() end
 
 ---
@@ -69,6 +72,7 @@ function coroutine.running() end
 ---| '"suspended"' # Is suspended or not started.
 ---| '"normal"'    # Is active but not running.
 ---| '"dead"'      # Has finished or stopped with an error.
+---@nodiscard
 function coroutine.status(co) end
 
 ---
@@ -76,8 +80,9 @@ function coroutine.status(co) end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-coroutine.wrap)
 ---
----@param f function
----@return fun(...):...
+---@param f async fun()
+---@return fun()
+---@nodiscard
 function coroutine.wrap(f) end
 
 ---
@@ -85,6 +90,7 @@ function coroutine.wrap(f) end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-coroutine.yield)
 ---
+---@async
 ---@return ...
 function coroutine.yield(...) end
 

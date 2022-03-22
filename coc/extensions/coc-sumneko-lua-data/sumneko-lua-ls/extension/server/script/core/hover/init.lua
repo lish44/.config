@@ -7,12 +7,14 @@ local findSource = require 'core.find-source'
 local markdown   = require 'provider.markdown'
 local infer      = require 'core.infer'
 
+---@async
 local function getHover(source)
     local md        = markdown()
     local defMark   = {}
     local labelMark = {}
     local descMark  = {}
 
+    ---@async
     local function addHover(def, checkLable)
         if defMark[def] then
             return
@@ -37,11 +39,16 @@ local function getHover(source)
     end
 
     if infer.searchAndViewInfers(source) == 'function' then
+        local hasFunc
         for _, def in ipairs(vm.getDefs(source)) do
             if def.type == 'function'
             or def.type == 'doc.type.function' then
+                hasFunc = true
                 addHover(def, true)
             end
+        end
+        if not hasFunc then
+            addHover(source, true)
         end
     else
         addHover(source, true)
@@ -74,6 +81,7 @@ local accept = {
     ['doc.module']    = true,
 }
 
+---@async
 local function getHoverByUri(uri, position)
     local ast = files.getState(uri)
     if not ast then

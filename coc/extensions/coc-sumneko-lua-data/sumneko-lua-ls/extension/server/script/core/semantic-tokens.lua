@@ -373,6 +373,7 @@ config.watch(function (key, value)
     end
 end)
 
+---@async
 return function (uri, start, finish)
     local state = files.getState(uri)
     local text  = files.getText(uri)
@@ -381,7 +382,7 @@ return function (uri, start, finish)
     end
 
     local results = {}
-    guide.eachSourceBetween(state.ast, start, finish, function (source)
+    guide.eachSourceBetween(state.ast, start, finish, function (source) ---@async
         local method = Care[source.type]
         if not method then
             return

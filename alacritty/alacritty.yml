@@ -20,7 +20,9 @@ colors:
     magenta: "#B48EAD"
     cyan: "#8FBCBB"
     white: "#ECEFF4"
-background_opacity: 0.97
+
+
+window.opacity: 0.8 
 font:
   normal:
     family: Hack Nerd font mono
@@ -34,10 +36,10 @@ font:
       #  bold_italic:
       #    family: Hack Nerd font mono
       #    style: Bold Italic
-  size: 18
+  size: 19
   offset:
-    x: 2
-    y: 3
+    x: 1
+    y: 4
   glyph_offset:
     x: 0
     y: 0
@@ -59,4 +61,7 @@ live_config_reload: true
 
 tabspaces: 4
 use_thin_strokes: true
-
+key_bindings:
+  - { key: Back, action:  ReceiveChar}
+  - { key: V, mods: command, action: Paste }
+  - { key: C, mods: command, action: Copy }

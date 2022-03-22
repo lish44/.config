@@ -8,6 +8,7 @@ local await    = require 'await'
 local noder    = require 'core.noder'
 
 local types = {'getglobal', 'getfield', 'getindex', 'getmethod'}
+---@async
 return function (uri, callback)
     local ast = files.getState(uri)
     if not ast then
@@ -16,7 +17,7 @@ return function (uri, callback)
 
     local cache = {}
 
-    guide.eachSourceTypes(ast.ast, types, function (src)
+    guide.eachSourceTypes(ast.ast, types, function (src) ---@async
         if src.type == 'getglobal' then
             local key = src[1]
             if not key then

@@ -1,18 +1,18 @@
-[23:45:11.925][info] [#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:49]: Lua Lsp startup, root: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[23:45:11.927][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:50]: ROOT:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[23:45:11.927][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:51]: LOGPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
-[23:45:11.927][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:52]: METAPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
-[23:45:11.927][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:53]: VERSION:	2.4.7
-[23:45:11.979][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	3B048E6FD1C155CD
-[23:45:11.985][info] [#0:script/pub/pub.lua:48]: Create brave:	1
-[23:45:11.985][info] [#0:script/pub/pub.lua:48]: Create brave:	2
-[23:45:11.985][info] [#0:script/pub/pub.lua:48]: Create brave:	3
-[23:45:11.985][info] [#0:script/pub/pub.lua:48]: Create brave:	4
-[23:45:11.985][debug][#0:script/service/service.lua:138]: 
+[23:45:49.319][info] [#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:49]: Lua Lsp startup, root: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:50]: ROOT:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:51]: LOGPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:52]: METAPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:53]: VERSION:	2.5.0-dev
+[23:45:49.364][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	05FF357DEB97DA72
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	1
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	2
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	3
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	4
+[23:45:49.369][debug][#0:script/service/service.lua:138]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
-        Total: 1.298 MB
-        # 00 : 1.298 MB
+        Total: 1.324 MB
+        # 00 : 1.324 MB
         # 01 : 0.000 MB
         # 02 : 0.000 MB
         # 03 : 0.000 MB
@@ -30,7 +30,7 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[23:45:12.035][debug][#0:script/client.lua:251]: Client init	{
+[23:45:49.401][debug][#0:script/client.lua:344]: Client init	{
     capabilities = {
         general = {
             markdown = {
@@ -409,19 +409,19 @@
         changeConfiguration = true,
     },
     locale = "zh_CN",
-    processId = 61219,
-    rootPath = "/Users/rehma/Downloads",
-    rootUri = "file:///Users/rehma/Downloads",
+    processId = 29103,
+    rootPath = "/Users/rehma/WorkSpace/Lua",
+    rootUri = "file:///Users/rehma/WorkSpace/Lua",
     trace = "off",
-    workDoneToken = "552b5093-a841-44ec-8b14-266860f53d3b",
+    workDoneToken = "1dc147dd-321e-4094-91d1-496ae70d5300",
     workspaceFolders = {
         [1] = {
-            name = "Downloads",
-            uri = "file:///Users/rehma/Downloads",
+            name = "Lua",
+            uri = "file:///Users/rehma/WorkSpace/Lua",
         },
     },
 }
-[23:45:12.035][info] [#0:script/language.lua:135]: VSC language: en-us
-[23:45:12.035][info] [#0:script/language.lua:136]: LS  language: en-us
-[23:45:12.036][info] [#0:script/workspace/workspace.lua:34]: Workspace inited: 	file:///Users/rehma/Downloads
-[23:45:12.036][info] [#0:script/workspace/workspace.lua:43]: Log path: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_Users_rehma_Downloads.log
+[23:45:49.401][info] [#0:script/language.lua:135]: VSC language: en-us
+[23:45:49.401][info] [#0:script/language.lua:136]: LS  language: en-us
+[23:45:49.402][info] [#0:script/workspace/workspace.lua:34]: Workspace inited: 	file:///Users/rehma/WorkSpace/Lua
+[23:45:49.402][info] [#0:script/workspace/workspace.lua:43]: Log path: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_Users_rehma_WorkSpace_Lua.log

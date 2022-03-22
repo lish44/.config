@@ -18,6 +18,7 @@ local SkipCheckClass = {
     ['lightuserdata'] = true,
 }
 
+---@async
 return function (uri, callback)
     local ast = files.getState(uri)
     if not ast then
@@ -26,6 +27,7 @@ return function (uri, callback)
 
     local cache = {}
 
+    ---@async
     local function checkUndefinedField(src)
         local id = noder.getID(src)
         if not id then

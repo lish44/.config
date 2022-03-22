@@ -50,6 +50,7 @@ local function resetFiles()
     end
 end
 
+---@async
 local function checkTrustLoad()
     local filePath = LOGPATH .. '/trusted'
     local trusted = util.loadFile(filePath)
@@ -79,7 +80,7 @@ function m.init()
         return
     end
     m.hasInited = true
-    await.call(function ()
+    await.call(function () ---@async
         local ws    = require 'workspace'
         m.interface = {}
 
@@ -100,7 +101,7 @@ function m.init()
             m.showError(err)
             return
         end
-        if not checkTrustLoad() then
+        if not client.isVSCode() and not checkTrustLoad() then
             return
         end
         local suc, err = xpcall(f, log.error, f)

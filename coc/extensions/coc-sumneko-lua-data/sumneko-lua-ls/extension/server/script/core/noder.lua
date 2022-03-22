@@ -2,6 +2,7 @@ local util      = require 'utility'
 local guide     = require 'parser.guide'
 local collector = require 'core.collector'
 local files     = require 'files'
+local config    = require 'config'
 
 local tostring = tostring
 local error    = error
@@ -149,11 +150,23 @@ local function getFieldEventName(field)
     if not docFunc or docFunc.type ~= 'doc.type.function' then
         return nil
     end
-    local firstArg = docFunc.args and #docFunc.args == 2 and docFunc.args[1]
+    local firstArg = docFunc.args and docFunc.args[1]
     if not firstArg then
         return nil
     end
-    local secondArg = docFunc.args[2]
+    local secondArg
+    if firstArg.name[1] == 'self' then
+        firstArg = docFunc.args[2]
+        if not firstArg then
+            return nil
+        end
+        secondArg = docFunc.args[3]
+    else
+        secondArg = docFunc.args[2]
+    end
+    if not secondArg then
+        return
+    end
     local firstType = firstArg.extends
     if not firstType then
         return nil
@@ -481,9 +494,11 @@ local function getNodeKey(source)
     if methodNode then
         return getNodeKey(methodNode)
     end
-    local localValueID = getLocalValueID(source)
-    if localValueID then
-        return localValueID
+    if config.get 'Lua.IntelliSense.traceFieldInject' then
+        local localValueID = getLocalValueID(source)
+        if localValueID then
+            return localValueID
+        end
     end
     local key, node = getKey(source)
     if key and guide.isGlobal(source) then
@@ -745,12 +760,17 @@ local function bindValue(noders, source, id)
     if not valueID then
         return
     end
+
+    local bindDocs = source.bindDocs
     if source.type == 'getlocal'
     or source.type == 'setlocal' then
-        source = source.node
+        if not config.get 'Lua.IntelliSense.traceLocalSet' then
+            return
+        end
+        bindDocs = source.node.bindDocs
     end
-    if source.bindDocs and value.type ~= 'table' then
-        for _, doc in ipairs(source.bindDocs) do
+    if bindDocs and value.type ~= 'table' then
+        for _, doc in ipairs(bindDocs) do
             if doc.type == 'doc.class'
             or doc.type == 'doc.type' then
                 return
@@ -759,6 +779,10 @@ local function bindValue(noders, source, id)
     end
     -- x = y : x -> y
     pushForward(noders, id, valueID, INFO_REJECT_SET)
+    if  not config.get 'Lua.IntelliSense.traceBeSetted'
+    and source.type ~= 'local' then
+        return
+    end
     -- 参数/call禁止反向查找赋值
     local valueType = smatch(valueID, '^(.-:).')
     if not valueType then
@@ -787,8 +811,10 @@ local function compileCallParam(noders, call, sourceID)
     if not nodeID then
         return
     end
+    local methodIndex = 0
     if node.type == 'getmethod' then
         fixIndex = fixIndex + 1
+        methodIndex = 1
     end
     local eventNodeID
     for firstIndex, callArg in ipairs(call.args) do
@@ -808,7 +834,7 @@ local function compileCallParam(noders, call, sourceID)
                     local paramID = sformat('%s%s%s%s%s'
                         , nodeID
                         , PARAM_INDEX
-                        , firstIndex
+                        , firstIndex + methodIndex
                         , PARAM_INDEX
                         , secondIndex
                     )
@@ -817,7 +843,7 @@ local function compileCallParam(noders, call, sourceID)
                         local eventParamID = sformat('%s%s%s%s%s'
                             , eventNodeID
                             , PARAM_INDEX
-                            , firstIndex
+                            , firstIndex + methodIndex
                             , PARAM_INDEX
                             , secondIndex
                         )
@@ -825,6 +851,14 @@ local function compileCallParam(noders, call, sourceID)
                     end
                 end
             end
+        end
+        if callArg.type == 'table' then
+            local paramID = sformat('%s%s%s'
+                , nodeID
+                , PARAM_INDEX
+                , firstIndex + methodIndex
+            )
+            pushForward(noders, getID(callArg), paramID)
         end
     end
 end
@@ -924,33 +958,14 @@ compileNodeMap = util.switch()
     : call(function (noders, id, source)
         pushForward(noders, id, 'dn:nil')
     end)
-    : case 'local'
-    : call(function (noders, id, source)
-        if source[1] ~= 'self' then
-            return
-        end
-        local func = guide.getParentFunction(source)
-        if func.isGeneric then
-            return
-        end
-        if source.parent.type ~= 'funcargs' then
-            return
-        end
-        local setmethod = func.parent
-        -- guess `self`
-        if setmethod and ( setmethod.type == 'setmethod'
-                        or setmethod.type == 'setfield'
-                        or setmethod.type == 'setindex') then
-            pushForward(noders, id, getID(setmethod.node))
-            pushBackward(noders, getID(setmethod.node), id, INFO_DEEP)
-        end
-    end)
     : case 'doc.type'
     : call(function (noders, id, source)
         if source.bindSources then
             for _, src in ipairs(source.bindSources) do
-                pushForward(noders, getID(src), id)
-                pushBackward(noders, id, getID(src))
+                if  src.parent.type ~= 'funcargs'
+                and not src.dummy then
+                    pushForward(noders, getID(src), id)
+                end
             end
         end
         for _, enumUnit in ipairs(source.enums) do
@@ -964,7 +979,10 @@ compileNodeMap = util.switch()
             pushForward(noders, id, unitID)
             if source.bindSources then
                 for _, src in ipairs(source.bindSources) do
-                    pushBackward(noders, unitID, getID(src))
+                    if  src.parent.type ~= 'funcargs'
+                    and not src.dummy then
+                        pushBackward(noders, unitID, getID(src))
+                    end
                 end
             end
         end
@@ -1037,8 +1055,12 @@ compileNodeMap = util.switch()
         end
         if source.bindSources then
             for _, src in ipairs(source.bindSources) do
-                pushForward(noders, getID(src), id)
-                pushForward(noders, id, getID(src))
+                if  src.parent.type ~= 'funcargs'
+                and src.type ~= 'setmethod'
+                and not src.dummy then
+                    pushForward(noders, getID(src), id)
+                    pushForward(noders, id, getID(src))
+                end
             end
         end
         for _, field in ipairs(source.fields) do
@@ -1069,7 +1091,6 @@ compileNodeMap = util.switch()
                 pushForward(noders, keyID, getID(field.field))
                 pushForward(noders, getID(field.field), keyID)
                 pushForward(noders, keyID, getID(field.extends))
-                pushBackward(noders, getID(field.extends), keyID)
             end
         end
     end)
@@ -1184,46 +1205,6 @@ compileNodeMap = util.switch()
     : call(function (noders, id, source)
         local uri = guide.getUri(source)
         collector.subscribe(uri, id, noders)
-
-        local parent = source.parent
-        if parent.type ~= 'doc.type' then
-            goto BREAK
-        end
-        local bindSources = parent.bindSources
-        if not bindSources then
-            goto BREAK
-        end
-        for i = 1, #bindSources do
-            local src = bindSources[i]
-            if src.type ~= 'local' then
-                goto CONTINUE1
-            end
-            local refs = src.ref
-            if not refs then
-                goto CONTINUE1
-            end
-            for j = 1, #refs do
-                local ref = refs[j]
-                if ref.type ~= 'getlocal' then
-                    goto CONTINUE2
-                end
-                local nxt = ref.next
-                if not nxt then
-                    goto CONTINUE2
-                end
-                local nxtType = nxt.type
-                if nxtType == 'setfield'
-                or nxtType == 'setmethod'
-                or nxtType == 'setindex' then
-                    local defID = 'def:' .. id
-                    collector.subscribe(uri, defID, noders)
-                    goto BREAK
-                end
-                ::CONTINUE2::
-            end
-            ::CONTINUE1::
-        end
-        ::BREAK::
     end)
     : case 'doc.class.name'
     : case 'doc.alias.name'
@@ -1302,6 +1283,13 @@ compileNodeMap = util.switch()
                             , '...'
                         ))
                     end
+                    for j = i + 1, i + 10 do
+                        pushForward(noders, sformat('%s%s%s'
+                            , id
+                            , PARAM_INDEX
+                            , j
+                        ), getID(arg))
+                    end
                 end
                 ::CONTINUE::
             end
@@ -1316,7 +1304,9 @@ compileNodeMap = util.switch()
                         , index
                     )
                     pushForward(noders, returnID, getID(rtnObj))
-                    pushBackward(noders, getID(rtnObj), returnID, INFO_DEEP_AND_DONT_CROSS)
+                    if config.get 'Lua.IntelliSense.traceReturn' then
+                        pushBackward(noders, getID(rtnObj), returnID, INFO_DEEP_AND_DONT_CROSS)
+                    end
                 end
             end
         end
@@ -1345,6 +1335,10 @@ compileNodeMap = util.switch()
                     pushForward(noders, valueID, getID(firstField))
                 end
             end
+        end
+        local parent = source.parent
+        if guide.isSet(parent)  then
+            pushForward(noders, id, getID(parent))
         end
     end)
     : case 'in'
@@ -1416,8 +1410,7 @@ compileNodeMap = util.switch()
         end
         for _, rtn in ipairs(source.returns) do
             for _, src in ipairs(source.bindSources) do
-                if src.type == 'function'
-                or guide.isSet(src) then
+                if src.type == 'function' then
                     local fullID = sformat('%s%s%s'
                         , getID(src)
                         , RETURN_INDEX
@@ -1453,7 +1446,6 @@ compileNodeMap = util.switch()
             if upvalues[key] then
                 for _, paramID in ipairs(upvalues[key]) do
                     pushForward(noders, id, paramID)
-                    pushBackward(noders, paramID, id)
                 end
             end
         end
@@ -1495,6 +1487,12 @@ function m.compileNode(noders, source)
 
             local defID = 'def:' .. id
             collector.subscribe(uri, defID, noders)
+
+            local fieldID = m.getLastID(id)
+            if fieldID then
+                local defNodeID = 'field:' .. fieldID
+                collector.subscribe(uri, defNodeID, noders)
+            end
 
             if guide.isGlobal(source) then
                 local defAnyID = 'def:g:'

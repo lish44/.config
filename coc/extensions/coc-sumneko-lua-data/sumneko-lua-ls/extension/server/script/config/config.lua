@@ -151,6 +151,7 @@ local Template = {
                                                 "?.lua",
                                                 "?/init.lua",
                                             },
+    ['Lua.runtime.pathStrict']              = Type.Boolean >> false,
     ['Lua.runtime.special']                 = Type.Hash(Type.String, Type.String),
     ['Lua.runtime.meta']                    = Type.String >> '${version} ${language} ${encoding}',
     ['Lua.runtime.unicodeName']             = Type.Boolean,
@@ -169,7 +170,7 @@ local Template = {
     ['Lua.diagnostics.workspaceRate']       = Type.Integer >> 100,
     ['Lua.diagnostics.libraryFiles']        = Type.String  >> 'Opened',
     ['Lua.diagnostics.ignoredFiles']        = Type.String  >> 'Opened',
-    ['Lua.workspace.ignoreDir']             = Type.Hash(Type.String, Type.Boolean, ';'),
+    ['Lua.workspace.ignoreDir']             = Type.Array(Type.String),
     ['Lua.workspace.ignoreSubmodules']      = Type.Boolean >> true,
     ['Lua.workspace.useGitIgnore']          = Type.Boolean >> true,
     ['Lua.workspace.maxPreload']            = Type.Integer >> 1000,
@@ -186,6 +187,7 @@ local Template = {
     ['Lua.completion.autoRequire']          = Type.Boolean >> true,
     ['Lua.completion.showParams']           = Type.Boolean >> true,
     ['Lua.completion.requireSeparator']     = Type.String  >> '.',
+    ['Lua.completion.postfix']              = Type.String  >> '@',
     ['Lua.signatureHelp.enable']            = Type.Boolean >> true,
     ['Lua.hover.enable']                    = Type.Boolean >> true,
     ['Lua.hover.viewString']                = Type.Boolean >> true,
@@ -198,8 +200,13 @@ local Template = {
     ['Lua.hint.paramType']                  = Type.Boolean >> true,
     ['Lua.hint.setType']                    = Type.Boolean >> false,
     ['Lua.hint.paramName']                  = Type.String  >> 'All',
+    ['Lua.hint.await']                      = Type.Boolean >> true,
     ['Lua.window.statusBar']                = Type.Boolean >> true,
     ['Lua.window.progressBar']              = Type.Boolean >> true,
+    ['Lua.IntelliSense.traceLocalSet']      = Type.Boolean >> false,
+    ['Lua.IntelliSense.traceReturn']        = Type.Boolean >> false,
+    ['Lua.IntelliSense.traceBeSetted']      = Type.Boolean >> false,
+    ['Lua.IntelliSense.traceFieldInject']   = Type.Boolean >> false,
     ['Lua.telemetry.enable']                = Type.Or(Type.Boolean >> false, Type.Nil),
     ['files.associations']                  = Type.Hash(Type.String, Type.String),
     ['files.exclude']                       = Type.Hash(Type.String, Type.Boolean),
@@ -210,6 +217,7 @@ local Template = {
 local config    = {}
 local rawConfig = {}
 
+---@class config.api
 local m = {}
 m.watchList = {}
 
@@ -286,6 +294,10 @@ function m.get(key)
     return config[key]
 end
 
+function m.getRaw(key)
+   return rawConfig[key]
+end
+
 function m.dump()
     local dump = {}
 
@@ -351,16 +363,6 @@ function m.event(key, value, oldValue)
         value    = value,
         oldValue = oldValue,
     }
-end
-
----@param source config.source
-function m.setSource(source)
-    m._source = source
-end
-
----@return config.source
-function m.getSource()
-    return m._source
 end
 
 function m.init()

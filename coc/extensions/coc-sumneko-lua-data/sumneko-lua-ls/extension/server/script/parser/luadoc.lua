@@ -10,9 +10,8 @@ local Parser = re.compile([[
 Main                <-  (Token / Sp)*
 Sp                  <-  %s+
 X16                 <-  [a-fA-F0-9]
-Word                <-  [a-zA-Z0-9_]
 Token               <-  Integer / Name / String / Symbol
-Name                <-  ({} {[a-zA-Z_0-9] [a-zA-Z0-9_.*-]*} {})
+Name                <-  ({} {%name} {})
                     ->  Name
 Integer             <-  ({} {[0-9]+} !'.' {})
                     ->  Integer
@@ -45,7 +44,7 @@ EChar               <-  'a' -> ea
                     /   ('z' (%nl / %s)*)     -> ''
                     /   ('x' {X16 X16})       -> Char16
                     /   ([0-9] [0-9]? [0-9]?) -> Char10
-                    /   ('u{' {Word*} '}')    -> CharUtf8
+                    /   ('u{' {X16*} '}')    -> CharUtf8
 Symbol              <-  ({} {
                             [:|,<>()?+#`{}]
                         /   '[]'
@@ -63,6 +62,7 @@ Symbol              <-  ({} {
     er = '\r',
     et = '\t',
     ev = '\v',
+    name = (m.R('az', 'AZ', '09', '\x80\xff') + m.S('_')) * (m.R('az', 'AZ', '__', '09', '\x80\xff') + m.S('_.*-'))^0,
     Char10 = function (char)
         char = tonumber(char)
         if not char or char < 0 or char > 255 then
@@ -342,6 +342,21 @@ local function parseTypeUnitTable(parent, node)
     return result
 end
 
+local function parseDots(tp, parent)
+    if not checkToken('symbol', '...', 1) then
+        return
+    end
+    nextToken()
+    local dots = {
+        type   = tp,
+        start  = getStart(),
+        finish = getFinish(),
+        parent = parent,
+        [1]    = '...',
+    }
+    return dots
+end
+
 local function  parseTypeUnitFunction()
     local typeUnit = {
         type    = 'doc.type.function',
@@ -361,47 +376,29 @@ local function  parseTypeUnitFunction()
             type   = 'doc.type.arg',
             parent = typeUnit,
         }
-        if checkToken('symbol', '...', 1) then
-            nextToken()
-            local vararg = {
-                type   = 'doc.type.name',
-                start  = getStart(),
+        arg.name = parseName('doc.type.name', arg)
+                or parseDots('doc.type.name', arg)
+        if not arg.name then
+            pushError {
+                type   = 'LUADOC_MISS_ARG_NAME',
+                start  = getFinish(),
                 finish = getFinish(),
-                parent = arg,
-                [1]    = '...',
             }
-            arg.name   = vararg
-            if not arg.start then
-                arg.start = arg.name.start
-            end
-            arg.finish = getFinish()
-        else
-            arg.name = parseName('doc.type.name', arg)
-            if not arg.name then
-                pushError {
-                    type   = 'LUADOC_MISS_ARG_NAME',
-                    start  = getFinish(),
-                    finish = getFinish(),
-                }
-                break
-            end
-            if not arg.start then
-                arg.start = arg.name.start
-            end
-            if checkToken('symbol', '?', 1) then
-                nextToken()
-                arg.optional = true
-            end
-            arg.finish = getFinish()
-            if not nextSymbolOrError(':') then
-                break
-            end
-            arg.extends = parseType(arg)
-            if not arg.extends then
-                break
-            end
-            arg.finish = getFinish()
+            break
         end
+        if not arg.start then
+            arg.start = arg.name.start
+        end
+        if checkToken('symbol', '?', 1) then
+            nextToken()
+            arg.optional = true
+        end
+        arg.finish = getFinish()
+        if checkToken('symbol', ':', 1) then
+            nextToken()
+            arg.extends = parseType(arg)
+        end
+        arg.finish = getFinish()
         typeUnit.args[#typeUnit.args+1] = arg
         if checkToken('symbol', ',', 1) then
             nextToken()
@@ -492,6 +489,19 @@ local function parseTypeUnitLiteralTable()
 end
 
 local function parseTypeUnit(parent, content)
+    if content == 'async' then
+        local tp, cont = peekToken()
+        if tp == 'name' then
+            if cont == 'fun' then
+                nextToken()
+                local func = parseTypeUnit(parent, cont)
+                if func then
+                    func.async = true
+                    return func
+                end
+            end
+        end
+    end
     local result
     if content == 'fun' then
         result = parseTypeUnitFunction()
@@ -749,6 +759,7 @@ local function parseParam()
         type   = 'doc.param',
     }
     result.param = parseName('doc.param.name', result)
+                or parseDots('doc.param.name', result)
     if not result.param then
         pushError {
             type   = 'LUADOC_MISS_PARAM_NAME',
@@ -1098,6 +1109,22 @@ local function parseModule()
     return result
 end
 
+local function parseAsync()
+    return {
+        type   = 'doc.async',
+        start  = getFinish(),
+        finish = getFinish(),
+    }
+end
+
+local function parseNoDiscard()
+    return {
+        type   = 'doc.nodiscard',
+        start  = getFinish(),
+        finish = getFinish(),
+    }
+end
+
 local function convertTokens()
     local tp, text = nextToken()
     if not tp then
@@ -1141,6 +1168,10 @@ local function convertTokens()
         return parseDiagnostic()
     elseif text == 'module' then
         return parseModule()
+    elseif text == 'async' then
+        return parseAsync()
+    elseif text == 'nodiscard' then
+        return parseNoDiscard()
     end
 end
 

@@ -1,18 +1,18 @@
-[20:54:31.360][info] [#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:49]: Lua Lsp startup, root: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[20:54:31.361][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:50]: ROOT:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
-[20:54:31.361][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:51]: LOGPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
-[20:54:31.361][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:52]: METAPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
-[20:54:31.361][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:53]: VERSION:	2.4.7
-[20:54:31.402][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	3B048E6FD1C155CD
-[20:54:31.407][info] [#0:script/pub/pub.lua:48]: Create brave:	1
-[20:54:31.407][info] [#0:script/pub/pub.lua:48]: Create brave:	2
-[20:54:31.407][info] [#0:script/pub/pub.lua:48]: Create brave:	3
-[20:54:31.407][info] [#0:script/pub/pub.lua:48]: Create brave:	4
-[20:54:31.407][debug][#0:script/service/service.lua:138]: 
+[23:45:49.319][info] [#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:49]: Lua Lsp startup, root: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:50]: ROOT:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:51]: LOGPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:52]: METAPATH:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta
+[23:45:49.320][debug][#0:/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/main.lua:53]: VERSION:	2.5.0-dev
+[23:45:49.364][info] [#0:script/service/telemetry.lua:21]: Telemetry Token:	05FF357DEB97DA72
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	1
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	2
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	3
+[23:45:49.369][info] [#0:script/pub/pub.lua:48]: Create brave:	4
+[23:45:49.369][debug][#0:script/service/service.lua:138]: 
 ========= Medical Examination Report =========
     --------------- Memory ---------------
-        Total: 1.298 MB
-        # 00 : 1.298 MB
+        Total: 1.324 MB
+        # 00 : 1.324 MB
         # 01 : 0.000 MB
         # 02 : 0.000 MB
         # 03 : 0.000 MB
@@ -30,7 +30,7 @@
         Holdon:   0
         Waiting:  0
 ==============================================
-[20:54:31.442][debug][#0:script/client.lua:251]: Client init	{
+[23:45:49.401][debug][#0:script/client.lua:344]: Client init	{
     capabilities = {
         general = {
             markdown = {
@@ -409,11 +409,11 @@
         changeConfiguration = true,
     },
     locale = "zh_CN",
-    processId = 28168,
+    processId = 29103,
     rootPath = "/Users/rehma/WorkSpace/Lua",
     rootUri = "file:///Users/rehma/WorkSpace/Lua",
     trace = "off",
-    workDoneToken = "ef697b69-6bd1-489c-af37-1902bd3ce6f1",
+    workDoneToken = "1dc147dd-321e-4094-91d1-496ae70d5300",
     workspaceFolders = {
         [1] = {
             name = "Lua",
@@ -421,19 +421,21 @@
         },
     },
 }
-[20:54:31.442][info] [#0:script/language.lua:135]: VSC language: en-us
-[20:54:31.442][info] [#0:script/language.lua:136]: LS  language: en-us
-[20:54:31.443][info] [#0:script/workspace/workspace.lua:34]: Workspace inited: 	file:///Users/rehma/WorkSpace/Lua
-[20:54:31.443][info] [#0:script/workspace/workspace.lua:43]: Log path: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_Users_rehma_WorkSpace_Lua.log
-[20:54:31.444][debug][#0:script/provider/completion.lua:27]: Enable completion.
-[20:54:31.444][debug][#0:script/provider/semantic-tokens.lua:33]: Enable semantic tokens.
-[20:54:31.444][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
-[20:54:31.444][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
-[20:54:31.444][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
-[20:54:31.444][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
-[20:54:31.444][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
-[20:54:31.455][debug][#0:script/provider/provider.lua:35]: load config from client
-[20:54:31.456][debug][#0:script/provider/provider.lua:43]: loaded config dump:	{
+[23:45:49.401][info] [#0:script/language.lua:135]: VSC language: en-us
+[23:45:49.401][info] [#0:script/language.lua:136]: LS  language: en-us
+[23:45:49.402][info] [#0:script/workspace/workspace.lua:34]: Workspace inited: 	file:///Users/rehma/WorkSpace/Lua
+[23:45:49.402][info] [#0:script/workspace/workspace.lua:43]: Log path: 	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/log/file_Users_rehma_WorkSpace_Lua.log
+[23:45:49.403][debug][#0:script/provider/completion.lua:34]: Enable completion.
+[23:45:49.403][debug][#0:script/provider/completion.lua:59]: Disable completion.
+[23:45:49.403][debug][#0:script/provider/completion.lua:34]: Enable completion.
+[23:45:49.403][debug][#0:script/provider/semantic-tokens.lua:33]: Enable semantic tokens.
+[23:45:49.403][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.403][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.403][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.404][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.404][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.416][debug][#0:script/provider/provider.lua:48]: load config from client
+[23:45:49.416][debug][#0:script/provider/provider.lua:59]: loaded config dump:	{
     Lua = {
         color = {
             mode = "Semantic",
@@ -497,224 +499,62 @@
                 [1] = ".vscode",
             },
             ignoreSubmodules = true,
+            library = {
+                [1] = "~/WorkSpace/Lua",
+            },
             maxPreload = 1000,
             preloadFileSize = 100,
             useGitIgnore = true,
         },
     },
 }
-[20:54:31.456][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
-[20:54:31.467][info] [#0:script/plugin.lua:87]: plugin path:	nil
-[20:54:32.442][info] [#0:script/workspace/workspace.lua:330]: Preload start.
-[20:54:32.443][info] [#0:script/workspace/workspace.lua:134]: Ignore directory:	.vscode
-[20:54:32.444][debug][#0:script/workspace/workspace.lua:167]: getLibraryMatchers	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.444][info] [#0:script/workspace/workspace.lua:335]: Scan files at:	/Users/rehma/WorkSpace/Lua
-[20:54:32.444][info] [#0:script/workspace/workspace.lua:340]: Scan library at:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.445][info] [#0:script/workspace/workspace.lua:364]: Found 12 files.
-[20:54:32.445][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua , size = 2.294 KB
-[20:54:32.445][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.448][info] [#0:script/workspace/workspace.lua:367]: Loaded 1/12 files
-[20:54:32.448][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua , size = 0.216 KB
-[20:54:32.448][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.448][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/package.lua , size = 2.923 KB
-[20:54:32.448][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.451][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/io.lua , size = 6.292 KB
-[20:54:32.451][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.455][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/debug.lua , size = 7.353 KB
-[20:54:32.455][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.461][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua , size = 2.496 KB
-[20:54:32.461][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.463][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/math.lua , size = 8.216 KB
-[20:54:32.464][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.470][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/string.lua , size = 5.977 KB
-[20:54:32.470][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.474][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/os.lua , size = 4.217 KB
-[20:54:32.474][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.478][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/table.lua , size = 2.712 KB
-[20:54:32.478][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.480][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/basic.lua , size = 13.751 KB
-[20:54:32.480][info] [#0:script/workspace/workspace.lua:246]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
-[20:54:32.488][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/WorkSpace/Lua/main.lua , size = 0.017 KB
-[20:54:33.177][info] [#0:script/workspace/workspace.lua:367]: Loaded 12/12 files
-[20:54:33.177][info] [#0:script/workspace/workspace.lua:376]: Preload finish.
-[20:54:33.177][debug][#0:script/provider/provider.lua:165]: didOpen	file:///Users/rehma/WorkSpace/Lua/main.lua
-[20:54:34.448][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.000753
-[20:54:35.053][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:35.135][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:35.555][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.000803
-[20:54:35.835][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:36.648][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:37.148][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:37.149][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00047700000000001
-[20:54:37.458][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:39.454][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00096799999999997
-[20:54:40.828][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:40.951][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:41.173][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:41.177][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00060199999999999
-[20:54:42.750][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:42.751][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00049399999999999
-[20:54:43.949][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:45.468][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00085099999999999
-[20:54:48.443][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:54:48.473][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.004498
-[20:54:48.568][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:54:49.354][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:54:50.470][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.001745
-[20:54:59.983][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	1
-[20:55:00.512][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:00.933][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	1
-[20:55:00.934][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00056299999999998
-[20:55:02.778][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:04.519][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00203
-[20:55:09.620][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:10.542][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00166
-[20:55:10.619][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:12.237][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:12.238][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.0015
-[20:55:12.925][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:13.697][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:13.707][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:13.707][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00056899999999999
-[20:55:14.029][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:14.140][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.001317
-[20:55:15.727][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:16.878][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:16.964][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:17.015][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:17.177][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:17.798][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.005815
-[20:55:18.074][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:19.127][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:19.382][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:19.577][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00074000000000002
-[20:55:19.839][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:20.064][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:20.201][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	4
-[20:55:20.582][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00085400000000002
-[20:55:20.965][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:20.975][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:21.102][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:21.214][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:22.626][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	3
-[20:55:23.917][debug][#0:script/provider/diagnostic.lua:242]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
-[20:55:25.600][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.00161
-[20:55:31.622][debug][#0:script/service/service.lua:138]: 
-========= Medical Examination Report =========
-    --------------- Memory ---------------
-        Total: 10.756 MB
-        # 00 : 5.357 MB
-        # 01 : 1.367 MB
-        # 02 : 1.365 MB
-        # 03 : 1.333 MB
-        # 04 : 1.333 MB
-    --------------- Coroutine ---------------
-        Total:     23
-        Running:   0
-        Suspended: 0
-        Normal:    0
-        Dead:      23
-    --------------- Cache ---------------
-        Total: 4
-        Dead:  3
-    --------------- Proto ---------------
-        Holdon:   0
-        Waiting:  0
-==============================================
-[20:55:31.622][debug][#0:script/workspace/workspace.lua:626]: FileChangeType.Deleted	file:///Users/rehma/WorkSpace/Lua/4913
-[20:55:31.623][debug][#0:script/workspace/workspace.lua:623]: FileChangeType.Created	file:///Users/rehma/WorkSpace/Lua/main.lua
-[20:55:31.623][info] [#0:script/workspace/workspace.lua:296]: Scan files at:	/Users/rehma/WorkSpace/Lua
-[20:55:31.623][info] [#0:script/workspace/workspace.lua:244]: Preload file at: file:///Users/rehma/WorkSpace/Lua/main.lua , size = 0.040 KB
-[20:55:31.623][debug][#0:script/workspace/workspace.lua:626]: FileChangeType.Deleted	file:///Users/rehma/WorkSpace/Lua/main.lua~
-[20:55:32.870][debug][#0:script/provider/provider.lua:173]: didClose	file:///Users/rehma/WorkSpace/Lua/main.lua
-[20:55:32.894][debug][#0:script/provider/provider.lua:165]: didOpen	file:///Users/rehma/WorkSpace/Lua/main.lua
-[20:56:31.806][debug][#0:script/service/service.lua:138]: 
-========= Medical Examination Report =========
-    --------------- Memory ---------------
-        Total: 11.161 MB
-        # 00 : 5.762 MB
-        # 01 : 1.367 MB
-        # 02 : 1.366 MB
-        # 03 : 1.333 MB
-        # 04 : 1.333 MB
-    --------------- Coroutine ---------------
-        Total:     32
-        Running:   0
-        Suspended: 0
-        Normal:    0
-        Dead:      32
-    --------------- Cache ---------------
-        Total: 4
-        Dead:  3
-    --------------- Proto ---------------
-        Holdon:   0
-        Waiting:  0
-==============================================
-[20:57:31.960][debug][#0:script/service/service.lua:138]: 
-========= Medical Examination Report =========
-    --------------- Memory ---------------
-        Total: 10.439 MB
-        # 00 : 5.040 MB
-        # 01 : 1.367 MB
-        # 02 : 1.366 MB
-        # 03 : 1.333 MB
-        # 04 : 1.333 MB
-    --------------- Coroutine ---------------
-        Total:     0
-        Running:   0
-        Suspended: 0
-        Normal:    0
-        Dead:      0
-    --------------- Cache ---------------
-        Total: 1
-        Dead:  0
-    --------------- Proto ---------------
-        Holdon:   0
-        Waiting:  0
-==============================================
-[20:57:50.008][debug][#0:script/provider/diagnostic.lua:358]: 全文诊断耗时：	0.001222
-[20:58:32.117][debug][#0:script/service/service.lua:138]: 
-========= Medical Examination Report =========
-    --------------- Memory ---------------
-        Total: 10.861 MB
-        # 00 : 5.461 MB
-        # 01 : 1.367 MB
-        # 02 : 1.366 MB
-        # 03 : 1.333 MB
-        # 04 : 1.333 MB
-    --------------- Coroutine ---------------
-        Total:     9
-        Running:   0
-        Suspended: 0
-        Normal:    0
-        Dead:      9
-    --------------- Cache ---------------
-        Total: 2
-        Dead:  1
-    --------------- Proto ---------------
-        Holdon:   0
-        Waiting:  0
-==============================================
-[20:59:32.254][debug][#0:script/service/service.lua:138]: 
-========= Medical Examination Report =========
-    --------------- Memory ---------------
-        Total: 10.205 MB
-        # 00 : 4.806 MB
-        # 01 : 1.367 MB
-        # 02 : 1.366 MB
-        # 03 : 1.333 MB
-        # 04 : 1.333 MB
-    --------------- Coroutine ---------------
-        Total:     0
-        Running:   0
-        Suspended: 0
-        Normal:    0
-        Dead:      0
-    --------------- Cache ---------------
-        Total: 1
-        Dead:  0
-    --------------- Proto ---------------
-        Holdon:   0
-        Waiting:  0
-==============================================
-[20:59:39.137][debug][#0:script/provider/provider.lua:173]: didClose	file:///Users/rehma/WorkSpace/Lua/main.lua
+[23:45:49.416][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.416][debug][#0:script/provider/semantic-tokens.lua:108]: Refresh semantic tokens.
+[23:45:49.428][info] [#0:script/plugin.lua:88]: plugin path:	nil
+[23:45:50.403][info] [#0:script/workspace/workspace.lua:335]: Preload start.
+[23:45:50.404][info] [#0:script/workspace/workspace.lua:129]: Ignore by library:	/Users/rehma/WorkSpace/Lua
+[23:45:50.404][info] [#0:script/workspace/workspace.lua:135]: Ignore directory:	.vscode
+[23:45:50.404][debug][#0:script/workspace/workspace.lua:168]: getLibraryMatchers	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.404][debug][#0:script/workspace/workspace.lua:168]: getLibraryMatchers	/Users/rehma/WorkSpace/Lua	/Users/rehma/WorkSpace/Lua
+[23:45:50.404][info] [#0:script/workspace/workspace.lua:340]: Scan files at:	/Users/rehma/WorkSpace/Lua
+[23:45:50.405][info] [#0:script/workspace/workspace.lua:345]: Scan library at:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.406][info] [#0:script/workspace/workspace.lua:345]: Scan library at:	/Users/rehma/WorkSpace/Lua
+[23:45:50.407][info] [#0:script/workspace/workspace.lua:369]: Found 15 files.
+[23:45:50.407][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/package.lua , size = 2.937 KB
+[23:45:50.407][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.410][info] [#0:script/workspace/workspace.lua:372]: Loaded 1/15 files
+[23:45:50.411][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/WorkSpace/Lua/main.lua , size = 0.119 KB
+[23:45:50.411][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/WorkSpace/Lua
+[23:45:50.411][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/WorkSpace/Lua/xlua%E4%BB%A3%E7%A0%81.lua , size = 12.693 KB
+[23:45:50.411][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/WorkSpace/Lua
+[23:45:50.424][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/builtin.lua , size = 0.216 KB
+[23:45:50.424][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.424][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/utf8.lua , size = 2.352 KB
+[23:45:50.424][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.427][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/io.lua , size = 6.375 KB
+[23:45:50.427][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.433][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/debug.lua , size = 7.516 KB
+[23:45:50.433][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.443][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/coroutine.lua , size = 2.573 KB
+[23:45:50.443][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.447][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/math.lua , size = 8.646 KB
+[23:45:50.447][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.454][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/string.lua , size = 6.207 KB
+[23:45:50.454][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.460][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/os.lua , size = 4.299 KB
+[23:45:50.460][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.464][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/table.lua , size = 2.767 KB
+[23:45:50.464][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.467][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua%205.4%20en-us%20utf8/basic.lua , size = 13.954 KB
+[23:45:50.467][info] [#0:script/workspace/workspace.lua:249]: ++++As library of:	/Users/rehma/.config/coc/extensions/coc-sumneko-lua-data/sumneko-lua-ls/extension/server/meta/Lua 5.4 en-us utf8
+[23:45:50.475][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/WorkSpace/Lua/xlua%E4%BB%A3%E7%A0%81.lua , size = 12.693 KB
+[23:45:50.475][info] [#0:script/workspace/workspace.lua:247]: Preload file at: file:///Users/rehma/WorkSpace/Lua/main.lua , size = 0.119 KB
+[23:45:51.220][info] [#0:script/workspace/workspace.lua:372]: Loaded 15/15 files
+[23:45:51.221][info] [#0:script/workspace/workspace.lua:381]: Preload finish.
+[23:45:51.221][debug][#0:script/provider/provider.lua:213]: didOpen	file:///Users/rehma/WorkSpace/Lua/main.lua
+[23:45:51.410][debug][#0:script/provider/diagnostic.lua:253]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
+[23:45:53.415][debug][#0:script/provider/diagnostic.lua:371]: 全文诊断耗时：	0.001481
+[23:45:55.298][debug][#0:script/provider/diagnostic.lua:253]: publishDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua	2
+[23:45:56.421][debug][#0:script/provider/diagnostic.lua:371]: 全文诊断耗时：	0.00205
+[23:45:58.106][debug][#0:script/provider/provider.lua:223]: didClose	file:///Users/rehma/WorkSpace/Lua/main.lua
+[23:45:58.107][debug][#0:script/provider/diagnostic.lua:140]: clearDiagnostics	file:///Users/rehma/WorkSpace/Lua/main.lua

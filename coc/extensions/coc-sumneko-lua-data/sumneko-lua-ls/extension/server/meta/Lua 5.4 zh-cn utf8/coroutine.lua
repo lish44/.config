@@ -13,8 +13,9 @@ coroutine = {}
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-coroutine.create)
 ---
----@param f function
+---@param f async fun()
 ---@return thread
+---@nodiscard
 function coroutine.create(f) end
 
 ---
@@ -24,6 +25,7 @@ function coroutine.create(f) end
 ---
 ---@param co? thread
 ---@return boolean
+---@nodiscard
 function coroutine.isyieldable(co) end
 
 ---@version >5.4
@@ -56,6 +58,7 @@ function coroutine.resume(co, val1, ...) end
 ---
 ---@return thread running
 ---@return boolean ismain
+---@nodiscard
 function coroutine.running() end
 
 ---
@@ -69,6 +72,7 @@ function coroutine.running() end
 ---| '"suspended"' # 挂起或是还没有开始运行。
 ---| '"normal"'    # 是活动的，但并不在运行。
 ---| '"dead"'      # 运行完主体函数或因错误停止。
+---@nodiscard
 function coroutine.status(co) end
 
 ---
@@ -76,8 +80,9 @@ function coroutine.status(co) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-coroutine.wrap)
 ---
----@param f function
----@return fun(...):...
+---@param f async fun()
+---@return fun()
+---@nodiscard
 function coroutine.wrap(f) end
 
 ---
@@ -85,6 +90,7 @@ function coroutine.wrap(f) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-coroutine.yield)
 ---
+---@async
 ---@return ...
 function coroutine.yield(...) end
 

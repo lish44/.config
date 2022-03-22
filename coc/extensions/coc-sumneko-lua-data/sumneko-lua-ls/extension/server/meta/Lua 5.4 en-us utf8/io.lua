@@ -79,7 +79,7 @@ function io.input(file) end
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-io.lines)
 ---
 ---@param filename string?
----@vararg readmode
+---@param ... readmode
 ---@return fun():string|number
 function io.lines(filename, ...) end
 
@@ -92,6 +92,7 @@ function io.lines(filename, ...) end
 ---@param mode     openmode
 ---@return file*?
 ---@return string? errmsg
+---@nodiscard
 function io.open(filename, mode) end
 
 ---
@@ -123,9 +124,10 @@ function io.popen(prog, mode) end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-io.read)
 ---
----@vararg readmode
+---@param ... readmode
 ---@return string|number
 ---@return ...
+---@nodiscard
 function io.read(...) end
 
 ---
@@ -134,6 +136,7 @@ function io.read(...) end
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-io.tmpfile)
 ---
 ---@return file*
+---@nodiscard
 function io.tmpfile() end
 
 ---@alias filetype
@@ -148,6 +151,7 @@ function io.tmpfile() end
 ---
 ---@param file file*
 ---@return filetype
+---@nodiscard
 function io.type(file) end
 
 ---
@@ -203,7 +207,7 @@ function file:flush() end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-file)
 ---
----@vararg readmode
+---@param ... readmode
 ---@return fun():string|number
 function file:lines(...) end
 
@@ -212,8 +216,9 @@ function file:lines(...) end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-file)
 ---
----@vararg readmode
+---@param ... readmode
 ---@return string|number
+---@nodiscard
 function file:read(...) end
 
 ---@alias seekwhence
@@ -251,7 +256,7 @@ function file:setvbuf(mode, size) end
 ---
 ---[View documents](http://www.lua.org/manual/5.4/manual.html#pdf-file)
 ---
----@vararg string|number
+---@param ... string|number
 ---@return file*?
 ---@return string? errmsg
 function file:write(...) end

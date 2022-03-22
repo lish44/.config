@@ -1,4 +1,5 @@
 local platform = require 'bee.platform'
+local fs       = require 'bee.filesystem'
 local config   = require 'config'
 local glob     = require 'glob'
 local furi     = require 'file-uri'
@@ -28,6 +29,33 @@ m.globalVersion  = 0
 m.fileCount      = 0
 m.astCount       = 0
 m.astMap         = {} -- setmetatable({}, { __mode = 'v' })
+
+local fixedUri = {}
+--- 获取文件的真实uri(真实大小写)
+---@param uri uri
+---@return uri
+function m.getRealUri(uri)
+    if platform.OS ~= 'Windows' then
+        return uri
+    end
+    local filename = furi.decode(uri)
+    local path = fs.path(filename)
+    local suc, res = pcall(fs.exists, path)
+    if not suc or not res then
+        return uri
+    end
+    suc, res = pcall(fs.canonical, path)
+    if not suc or res:string() == filename then
+        return uri
+    end
+    filename = res:string()
+    local ruri = furi.encode(filename)
+    if not fixedUri[ruri] then
+        fixedUri[ruri] = true
+        log.warn(('Fix real file uri: %s -> %s'):format(uri, ruri))
+    end
+    return ruri
+end
 
 --- 打开文件
 ---@param uri uri
@@ -120,8 +148,15 @@ end
 --- 设置文件文本
 ---@param uri uri
 ---@param text string
-function m.setText(uri, text, isTrust, instance)
+---@param isTrust boolean
+---@param version integer
+function m.setText(uri, text, isTrust, version)
     if not text then
+        return
+    end
+    if #text > 1024 * 1024 * 10 then
+        local client = require 'client'
+        client.showMessage('Warning', lang.script('WORKSPACE_SKIP_HUGE_FILE', uri))
         return
     end
     --log.debug('setText', uri)
@@ -129,7 +164,6 @@ function m.setText(uri, text, isTrust, instance)
     if not m.fileMap[uri] then
         m.fileMap[uri] = {
             uri = uri,
-            version = 0,
         }
         m.fileCount = m.fileCount + 1
         create = true
@@ -150,11 +184,12 @@ function m.setText(uri, text, isTrust, instance)
     file.text       = newText
     file.trusted    = isTrust
     file.originText = text
+    file.rows       = nil
     file.words      = nil
     m.astMap[uri] = nil
     file.cache = {}
     file.cacheActiveTime = math.huge
-    file.version = file.version + 1
+    file.version = version
     m.globalVersion = m.globalVersion + 1
     await.close('files.version')
     m.onWatch('version')
@@ -457,6 +492,7 @@ function m.compileState(uri, text)
     --await.delay()
     if state then
         state.uri = uri
+        state.lua = text
         state.ast.uri = uri
         local clock = os.clock()
         parser.luadoc(state)
@@ -488,14 +524,14 @@ function m.getState(uri)
     if not file then
         return nil
     end
-    local ast = m.astMap[uri]
-    if not ast then
-        ast = m.compileState(uri, file.text)
-        m.astMap[uri] = ast
+    local state = m.astMap[uri]
+    if not state then
+        state = m.compileState(uri, file.text)
+        m.astMap[uri] = state
         --await.delay()
     end
     file.cacheActiveTime = timer.clock()
-    return ast
+    return state
 end
 
 ---设置文件的当前可见范围
@@ -703,13 +739,16 @@ function m.getDllWords(uri)
 end
 
 --- 注册事件
+---@param callback async fun(ev: string, uri: uri)
 function m.watch(callback)
     m.watchList[#m.watchList+1] = callback
 end
 
-function m.onWatch(ev, ...)
+function m.onWatch(ev, uri)
     for _, callback in ipairs(m.watchList) do
-        xpcall(callback, log.error, ev, ...)
+        await.call(function ()
+            callback(ev, uri)
+        end)
     end
 end
 

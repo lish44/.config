@@ -38,14 +38,11 @@ function! modify#toggleWord(word)
                 \ ['width', 'height'],
                 \ ['horizontal', 'vertical'],
                 \ ['username', 'password'],
-                \ ['hkcr', 'HKEY_CLASSES_ROOT'],
-                \ ['hkcu', 'HKEY_CURRENT_USER'],
-                \ ['hklm', 'HKEY_LOCAL_MACHINE'],
-                \ ['hku', 'HKEY_USERS'],
-                \ ['hkcc', 'HKEY_CURRENT_CONFIG'],
                 \ ['左', '右'],
                 \ ['上', '下'],
                 \ ['水平', '垂直'],
+                \ ['1', '0'],
+                \ ['0', '1'],
                 \ ]
     let word = a:word
     "word前后内容
@@ -135,3 +132,37 @@ endfunction
 "     if strcharpart(s, 0, 1) == char | let s = strcharpart(s, 1) | endif
 "     return split(s, char)
 " endfunction
+
+noremap <silent><leader>r :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+	exec "w"
+	if &filetype == 'cs'
+		set splitbelow
+		silent! exec "!mcs %"
+		:sp
+		:res -5
+		:term mono %<.exe
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'markdown'
+		exec "InstantMarkdownPreview"
+	elseif &filetype == 'lua'
+		set splitbelow
+		:sp
+		:term lua %
+    elseif &filetype == 'html'
+		silent! exec "!".g:mkdp_browser." % &"
+	endif
+endfunc
+
+
+" w忽略标点 vscode无效
+function! JumpToNextWord()
+    normal w
+    while strpart(getline('.'), col('.')-1, 1) !~ '\w'
+        normal w
+    endwhile
+endfunction
+nnoremap <silent> W :call JumpToNextWord()<CR>

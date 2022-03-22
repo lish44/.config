@@ -13,7 +13,7 @@ nnoremap q :q<cr>
 
 nnoremap <leader>q q
 " 不做任何保存直接退出
-nnoremap Q :qa!<CR>
+nnoremap Q :q!<CR>
 
 "分屏
 "nnoremap tl :set splitright<CR> :vsplit<CR>
@@ -29,10 +29,15 @@ nnoremap <LEADER>j <C-w>j
 nnoremap <LEADER>h <C-w>h
 nnoremap <LEADER>l <C-w>l
 " r直接替换复制寄存器里的东西
-nnoremap r ciw<esc>"+p
+nnoremap <silent>r ciw<esc>"+p
+" 复制到系统剪切板
+noremap <LEADER>y "+y
+" noremap <LEADER>p "+p
+
+" noremap <command>v "+p
 
 " 直接更该括号的内容
-nnoremap cc $F(lci)
+nnoremap cd $F(lci)
 "nnoremap cv $F(wWcw
 "nnoremap c2 $F(f,wWcw
 "nnoremap c3 $F(f,;wWcw
@@ -43,32 +48,29 @@ nnoremap cc $F(lci)
 "=== 普通模式，视图模式
 "===
 " 对调ik
-noremap i k
-noremap k i
-noremap K I
+noremap <silent> i k
+noremap <silent> k i
+noremap <silent> K I
 " 行尾
-noremap L $
+noremap <silent> L $
 " 行首
-noremap H ^
-noremap I 4k
-noremap J 4j
-noremap <C-a> gg<S-v>G
-" 复制到系统剪切板
-"noremap <LEADER>y "+y
-"noremap <LEADER>p "+p
+noremap <silent> H ^
+noremap <silent> I 4k
+noremap <silent> J 4j
+noremap <silent> <C-a> gg<S-v>G
 nnoremap <TAB> :bnext<CR>
 nnoremap <S-TAB> :bprevious<CR>
 
 "===
 "===视图模式
 "===
-vnoremap i k
-vnoremap k i
-vnoremap K I
-vnoremap I 3k
-vnoremap J 3j
-vnoremap L $
-vnoremap H ^
+vnoremap <silent> i k
+vnoremap <silent> k i
+vnoremap <silent> K I
+vnoremap <silent> I 3k
+vnoremap <silent> J 3j
+vnoremap <silent> L $
+vnoremap <silent> H ^
 
 
 "===
@@ -99,4 +101,7 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " 自定义配置
 " 括号匹配
 nnoremap zx %
-nnoremap cv ciw
+nnoremap cc ciw
+
+nnoremap + <C-a>
+nnoremap - <C-x>

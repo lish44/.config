@@ -21,8 +21,9 @@ utf8 = {}
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-utf8.char)
 ---
 ---@param code integer
----@vararg integer
+---@param ... integer
 ---@return string
+---@nodiscard
 function utf8.char(code, ...) end
 
 ---
@@ -53,6 +54,7 @@ function utf8.codes(s, lax) end
 ---@param lax? boolean
 ---@return integer code
 ---@return ...
+---@nodiscard
 function utf8.codepoint(s, i, j, lax) end
 
 ---
@@ -66,6 +68,7 @@ function utf8.codepoint(s, i, j, lax) end
 ---@param lax? boolean
 ---@return integer?
 ---@return integer? errpos
+---@nodiscard
 function utf8.len(s, i, j, lax) end
 
 ---
@@ -77,6 +80,7 @@ function utf8.len(s, i, j, lax) end
 ---@param n integer
 ---@param i integer
 ---@return integer p
+---@nodiscard
 function utf8.offset(s, n, i) end
 
 return utf8

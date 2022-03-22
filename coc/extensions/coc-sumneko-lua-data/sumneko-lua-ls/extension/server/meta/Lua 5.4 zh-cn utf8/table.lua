@@ -18,6 +18,7 @@ table = {}
 ---@param i?   integer
 ---@param j?   integer
 ---@return string
+---@nodiscard
 function table.concat(list, sep, i, j) end
 
 ---
@@ -39,6 +40,7 @@ function table.insert(list, pos, value) end
 ---
 ---@param table table
 ---@return integer
+---@nodiscard
 function table.maxn(table) end
 
 ---@version >5.3
@@ -67,6 +69,7 @@ function table.move(a1, f, e, t, a2) end
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-table.pack)
 ---
 ---@return table
+---@nodiscard
 function table.pack(...) end
 
 ---
@@ -102,6 +105,7 @@ function table.sort(list, comp) end
 ---@param list table
 ---@param i?   integer
 ---@param j?   integer
+---@nodiscard
 function table.unpack(list, i, j) end
 
 return table

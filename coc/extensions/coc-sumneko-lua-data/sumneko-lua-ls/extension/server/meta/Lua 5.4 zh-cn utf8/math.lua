@@ -39,6 +39,7 @@ math = {}
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.abs(x) end
 
 ---
@@ -48,6 +49,7 @@ function math.abs(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.acos(x) end
 
 ---
@@ -57,6 +59,7 @@ function math.acos(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.asin(x) end
 
 ---
@@ -67,6 +70,7 @@ function math.asin(x) end
 ---@param y  number
 ---@param x? number
 ---@return number
+---@nodiscard
 function math.atan(y, x) end
 
 ---@version <5.2
@@ -78,6 +82,7 @@ function math.atan(y, x) end
 ---@param y number
 ---@param x number
 ---@return number
+---@nodiscard
 function math.atan2(y, x) end
 
 ---
@@ -87,6 +92,7 @@ function math.atan2(y, x) end
 ---
 ---@param x number
 ---@return integer
+---@nodiscard
 function math.ceil(x) end
 
 ---
@@ -95,6 +101,7 @@ function math.ceil(x) end
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-math.cos)
 ---
 ---@param x number
+---@nodiscard
 function math.cos(x) end
 
 ---@version <5.2
@@ -105,6 +112,7 @@ function math.cos(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.cosh(x) end
 
 ---
@@ -114,6 +122,7 @@ function math.cosh(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.deg(x) end
 
 ---
@@ -123,6 +132,7 @@ function math.deg(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.exp(x) end
 
 ---
@@ -132,6 +142,7 @@ function math.exp(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.floor(x) end
 
 ---
@@ -142,6 +153,7 @@ function math.floor(x) end
 ---@param x number
 ---@param y number
 ---@return number
+---@nodiscard
 function math.fmod(x, y) end
 
 ---@version <5.2
@@ -153,6 +165,7 @@ function math.fmod(x, y) end
 ---@param x number
 ---@return number m
 ---@return number e
+---@nodiscard
 function math.frexp(x) end
 
 ---@version <5.2
@@ -164,6 +177,7 @@ function math.frexp(x) end
 ---@param m number
 ---@param e number
 ---@return number
+---@nodiscard
 function math.ldexp(m, e) end
 
 ---
@@ -174,6 +188,7 @@ function math.ldexp(m, e) end
 ---@param x     number
 ---@param base? integer
 ---@return number
+---@nodiscard
 function math.log(x, base) end
 
 ---@version <5.1
@@ -184,6 +199,7 @@ function math.log(x, base) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.log10(x) end
 
 ---
@@ -192,8 +208,9 @@ function math.log10(x) end
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-math.max)
 ---
 ---@param x number
----@vararg number
+---@param ... number
 ---@return number
+---@nodiscard
 function math.max(x, ...) end
 
 ---
@@ -202,8 +219,9 @@ function math.max(x, ...) end
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-math.min)
 ---
 ---@param x number
----@vararg number
+---@param ... number
 ---@return number
+---@nodiscard
 function math.min(x, ...) end
 
 ---
@@ -214,6 +232,7 @@ function math.min(x, ...) end
 ---@param x number
 ---@return integer
 ---@return number
+---@nodiscard
 function math.modf(x) end
 
 ---@version <5.2
@@ -225,6 +244,7 @@ function math.modf(x) end
 ---@param x number
 ---@param y number
 ---@return number
+---@nodiscard
 function math.pow(x, y) end
 
 ---
@@ -234,6 +254,7 @@ function math.pow(x, y) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.rad(x) end
 
 ---
@@ -249,6 +270,7 @@ function math.rad(x) end
 ---@param m integer
 ---@param n integer
 ---@return integer
+---@nodiscard
 function math.random(m, n) end
 
 ---
@@ -261,6 +283,7 @@ function math.random(m, n) end
 ---
 ---@param x? integer
 ---@param y? integer
+---@nodiscard
 function math.randomseed(x, y) end
 
 ---
@@ -270,6 +293,7 @@ function math.randomseed(x, y) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.sin(x) end
 
 ---@version <5.2
@@ -280,6 +304,7 @@ function math.sin(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.sinh(x) end
 
 ---
@@ -289,6 +314,7 @@ function math.sinh(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.sqrt(x) end
 
 ---
@@ -298,6 +324,7 @@ function math.sqrt(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.tan(x) end
 
 ---@version <5.2
@@ -308,6 +335,7 @@ function math.tan(x) end
 ---
 ---@param x number
 ---@return number
+---@nodiscard
 function math.tanh(x) end
 
 ---@version >5.3
@@ -318,6 +346,7 @@ function math.tanh(x) end
 ---
 ---@param x number
 ---@return integer?
+---@nodiscard
 function math.tointeger(x) end
 
 ---
@@ -330,6 +359,7 @@ function math.tointeger(x) end
 ---| '"integer"'
 ---| '"float"'
 ---| 'nil'
+---@nodiscard
 function math.type(x) end
 
 ---
@@ -340,6 +370,7 @@ function math.type(x) end
 ---@param m integer
 ---@param n integer
 ---@return boolean
+---@nodiscard
 function math.ult(m, n) end
 
 return math

@@ -2,7 +2,7 @@
 autocmd BufWritePost $MYVIMRC source $MYVIMRC   "让配置变更立即生效
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif "记录光标当前位置下次打开保持
 syntax on
-set guifont=Menlo:h15                           "字体
+set guifont=Menlo:h14                           "字体
 set nocompatible                                "关闭兼容模式
 set autoread                                    "文件被外部改动后, 自动加载
 set nobackup                                    "不生成备份文件
@@ -16,7 +16,7 @@ set scrolloff=4                                 "永远保持x行
 set updatetime=100                              "响应更快
 set shortmess+=c                                "补全的时候少一些东西
 set hidden                                      "不保存可以跳转文件，作用就是保存在缓冲区中
-set cursorline                                  "超框换行
+set cursorline                                  "显示行
 set wrap                                        "tab menu设置
 set mouse=a
 set encoding=utf-8
@@ -28,7 +28,8 @@ set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set clipboard=unnamedplus                       "copy everthing
+" set clipboard=unnamedplus                       "copy everthing
+" set termguicolors
 set ff=unix
 filetype on
 filetype indent on

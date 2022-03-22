@@ -1,9 +1,15 @@
 local files   = require 'files'
 local util    = require 'utility'
 local encoder = require 'encoder'
+local client  = require 'client'
 
--- TODO
-local offsetEncoding = 'utf16'
+local offsetEncoding
+local function getOffsetEncoding()
+    if not offsetEncoding then
+        offsetEncoding = client.getOffsetEncoding():lower():gsub('%-', '')
+    end
+    return offsetEncoding
+end
 
 local function splitRows(text)
     local rows = {}
@@ -17,15 +23,16 @@ local function getLeft(text, char)
     if not text then
         return ''
     end
+    local encoding = getOffsetEncoding()
     local left
-    local length = encoder.len(offsetEncoding, text)
+    local length = encoder.len(encoding, text)
 
     if char == 0 then
         left = ''
     elseif char >= length then
         left = text
     else
-        left = text:sub(1, encoder.offset(offsetEncoding, text, char + 1) - 1)
+        left = text:sub(1, encoder.offset(encoding, text, char + 1) - 1)
     end
 
     return left
@@ -35,15 +42,16 @@ local function getRight(text, char)
     if not text then
         return ''
     end
+    local encoding = getOffsetEncoding()
     local right
-    local length = encoder.len(offsetEncoding, text)
+    local length = encoder.len(encoding, text)
 
     if char == 0 then
         right = text
     elseif char >= length then
         right = ''
     else
-        right = text:sub(encoder.offset(offsetEncoding, text, char + 1))
+        right = text:sub(encoder.offset(encoding, text, char + 1))
     end
 
     return right
@@ -91,25 +99,18 @@ local function mergeRows(rows, change)
     end
 end
 
-return function (uri, changes)
-    local text
+return function (text, rows, changes)
     for _, change in ipairs(changes) do
         if change.range then
-            local rows = files.getCachedRows(uri)
-            if not rows then
-                text = text or files.getOriginText(uri) or ''
-                rows = splitRows(text)
-            end
+            rows = rows or splitRows(text)
             mergeRows(rows, change)
-            files.setCachedRows(uri, rows)
         else
-            files.setCachedRows(uri, nil)
+            rows = nil
             text = change.text
         end
     end
-    local rows = files.getCachedRows(uri)
     if rows then
         text = table.concat(rows)
     end
-    return text
+    return text, rows
 end

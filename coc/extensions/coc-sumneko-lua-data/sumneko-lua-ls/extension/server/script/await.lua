@@ -25,7 +25,7 @@ local function setID(id, co, callback)
 end
 
 --- 设置错误处理器
----@param errHandle function {comment = '当有错误发生时，会以错误堆栈为参数调用该函数'}
+---@param errHandle function # 当有错误发生时，会以错误堆栈为参数调用该函数
 function m.setErrorHandle(errHandle)
     m.errorHandle = errHandle
 end
@@ -39,6 +39,7 @@ function m.checkResult(co, ...)
 end
 
 --- 创建一个任务
+---@param callback async fun()
 function m.call(callback, ...)
     local co = coroutine.create(callback)
     local closers = {}
@@ -66,6 +67,7 @@ function m.call(callback, ...)
 end
 
 --- 创建一个任务，并挂起当前线程，当任务完成后再延续当前线程/若任务被关闭，则返回nil
+---@async
 function m.await(callback, ...)
     if not coroutine.isyieldable() then
         return callback(...)
@@ -109,6 +111,7 @@ end
 
 --- 休眠一段时间
 ---@param time number
+---@async
 function m.sleep(time)
     if not coroutine.isyieldable() then
         if m.errorHandle then
@@ -128,6 +131,7 @@ end
 
 --- 等待直到唤醒
 ---@param callback function
+---@async
 function m.wait(callback, ...)
     if not coroutine.isyieldable() then
         return
@@ -148,6 +152,7 @@ function m.wait(callback, ...)
 end
 
 --- 延迟
+---@async
 function m.delay()
     if not m._enable then
         return
@@ -174,6 +179,7 @@ function m.delay()
 end
 
 --- stop then close
+---@async
 function m.stop()
     if not coroutine.isyieldable() then
         return
@@ -239,6 +245,7 @@ function m.disable()
 end
 
 --- 注册事件
+---@param callback async fun(ev: string, ...)
 function m.watch(callback)
     m.watchList[#m.watchList+1] = callback
 end

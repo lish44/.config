@@ -73,8 +73,9 @@ _G = {}
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-getfenv)
 ---
----@param f? function
+---@param f? async fun()
 ---@return table
+---@nodiscard
 function getfenv(f) end
 
 ---
@@ -84,6 +85,7 @@ function getfenv(f) end
 ---
 ---@param object any
 ---@return table metatable
+---@nodiscard
 function getmetatable(object) end
 
 ---
@@ -122,6 +124,7 @@ function ipairs(t) end
 ---@param env?       table
 ---@return function
 ---@return string   error_message
+---@nodiscard
 function load(chunk, chunkname, mode, env) end
 
 ---
@@ -134,6 +137,7 @@ function load(chunk, chunkname, mode, env) end
 ---@param env?      table
 ---@return function
 ---@return string   error_message
+---@nodiscard
 function loadfile(filename, mode, env) end
 
 ---@version 5.1
@@ -146,6 +150,7 @@ function loadfile(filename, mode, env) end
 ---@param chunkname? string
 ---@return function
 ---@return string error_message
+---@nodiscard
 function loadstring(text, chunkname) end
 
 ---@version 5.1
@@ -172,6 +177,7 @@ function module(name, ...) end
 ---@param index? K
 ---@return K
 ---@return V
+---@nodiscard
 function next(table, index) end
 
 ---
@@ -199,7 +205,7 @@ function pairs(t) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-pcall)
 ---
----@param f     function
+---@param f     async fun()
 ---@param arg1? any
 ---@return boolean success
 ---@return any result
@@ -221,6 +227,7 @@ function print(...) end
 ---@param v1 any
 ---@param v2 any
 ---@return boolean
+---@nodiscard
 function rawequal(v1, v2) end
 
 ---
@@ -231,6 +238,7 @@ function rawequal(v1, v2) end
 ---@param table table
 ---@param index any
 ---@return any
+---@nodiscard
 function rawget(table, index) end
 
 ---
@@ -240,6 +248,7 @@ function rawget(table, index) end
 ---
 ---@param v table|string
 ---@return integer len
+---@nodiscard
 function rawlen(v) end
 
 ---
@@ -262,6 +271,7 @@ function rawset(table, index, value) end
 ---
 ---@param index integer|'"#"'
 ---@return any
+---@nodiscard
 function select(index, ...) end
 
 ---@version 5.1
@@ -270,7 +280,7 @@ function select(index, ...) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-setfenv)
 ---
----@param f     function|integer
+---@param f     async fun()|integer
 ---@param table table
 ---@return function
 function setfenv(f, table) end
@@ -297,6 +307,7 @@ function setmetatable(table, metatable) end
 ---@param e     string|number
 ---@param base? integer
 ---@return number?
+---@nodiscard
 function tonumber(e, base) end
 
 ---
@@ -308,6 +319,7 @@ function tonumber(e, base) end
 ---
 ---@param v any
 ---@return string
+---@nodiscard
 function tostring(v) end
 
 ---@alias type
@@ -328,6 +340,7 @@ function tostring(v) end
 ---
 ---@param v any
 ---@return type type
+---@nodiscard
 function type(v) end
 
 ---
@@ -351,7 +364,7 @@ function warn(message, ...) end
 ---
 ---[查看文档](http://www.lua.org/manual/5.4/manual.html#pdf-xpcall)
 ---
----@param f     function
+---@param f     async fun()
 ---@param msgh  function
 ---@param arg1? any
 ---@return boolean success
@@ -372,4 +385,5 @@ function xpcall(f, msgh, arg1, ...) end
 ---@param list table
 ---@param i?   integer
 ---@param j?   integer
+---@nodiscard
 function unpack(list, i, j) end
