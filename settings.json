@@ -1,0 +1,252 @@
+{
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Menlo, Monaco",
+    "editor.lineNumbers": "relative",
+    "csharp.referencesCodeLens.enabled": true,
+    "explorer.confirmDelete": false,
+    "editor.renderWhitespace": "trailing",
+    "update.showReleaseNotes": false,
+    "update.mode": "none",
+    "editor.formatOnSave": true,
+    "omnisharp.useEditorFormattingSettings": true,
+    "editor.minimap.enabled": true,
+    "extensions.autoUpdate": false,
+    "editor.smoothScrolling": false,
+    "editor.wordWrap": "on",
+    // "editor.cursorSmoothCaretAnimation": true,
+    //---------------vim----------------
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/local/Cellar/neovim/0.6.1/bin/nvim", // 每次升级会更新版本号所以制作替身
+    // "vim.neovimPath": "nvim", //软链接放在同json根目录下 
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.config/nvim/init.vim",
+    "vim.leader": " ",
+    // "vim.sneak": true,
+    "vim.sneakReplacesF": true,
+    "vim.searchHighlightColor": "#f1c40f",
+    "vim.searchHighlightTextColor": "#000",
+    // "vim.surround": true,
+    // "vim.foldfix": true,
+    // "vim.easymotion": true,
+    "vim.hlsearch": true,
+    "vim.handleKeys": {
+        "<C-e>": false,
+        "<C-f>": false,
+        "]": false,
+        "[": false,
+    },
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<down>"
+            ]
+        },
+        {
+            "before": [
+                "<C-i>"
+            ],
+            "after": [
+                "<up>"
+            ]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "f",
+                ">"
+            ]
+        },
+        {
+            "before": [
+                "t",
+                "m"
+            ],
+            "commands": [
+                "workbench.action.joinAllGroups"
+            ]
+        },
+        // {
+        //     "before": [
+        //         "<tab>"
+        //         // "<c-]>"
+        //     ],
+        //     "after": [
+        //         "<esc>"
+        //     ],
+        //     "commands": [
+        //         // ":+tabpre"
+        //         // ":+tabnext"
+        //         "workbench.action.nextEditor"
+        //     ]
+        // },
+        {
+            "before": [
+                "["
+            ],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [
+                "]"
+            ],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        // {
+        //     "before": [
+        //         "t",
+        //         "l"
+        //     ],
+        //     "commands": [
+        //         ":vsplit",
+        //         "workbench.action.files.save",
+        //     ],
+        //     "after": [
+        //         "<c-w>",
+        //         "q"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "t",
+        //         "h"
+        //     ],
+        //     "commands": [
+        //         ":vsplit",
+        //         "workbench.action.files.save",
+        //     ],
+        //     "after": [
+        //         "<c-w>",
+        //         "q"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "t",
+        //         "i"
+        //     ],
+        //     "commands": [
+        //         ":split",
+        //         "workbench.action.files.save",
+        //     ],
+        //     "after": [
+        //         "<c-w>",
+        //         "q"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "t",
+        //         "j"
+        //     ],
+        //     "commands": [
+        //         ":split",
+        //         "workbench.action.files.save",
+        //     ],
+        //     "after": [
+        //         "<c-w>",
+        //         "q"
+        //     ]
+        // },
+        {
+            "before": [
+                "t",
+                "["
+            ],
+            "commands": [
+                "workbench.action.moveEditorToPreviousGroup"
+            ]
+        },
+        {
+            "before": [
+                "t",
+                "]"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToNextGroup"
+            ]
+        },
+        {
+            "before": [
+                "<enter>",
+            ],
+            "commands": [
+                "editor.action.smartSelect.expand"
+            ],
+            "when": [
+                "editorTextFocus"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<enter>",
+            ],
+            "commands": [
+                "editor.action.smartSelect.expand"
+            ],
+            "when": [
+                "editorTextFocus"
+            ]
+        },
+        {
+            "before": [
+                "L",
+            ],
+            "after": [
+                "$",
+                "h"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "t"
+            ],
+            "commands": [
+                "extension.translate"
+            ]
+        },
+    ],
+    // "[csharp]": {
+    //     "editor.defaultFormatter": "Leopotam.csharpfixformat"
+    // },
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4 }",
+    "editor.semanticHighlighting.enabled": true,
+    // lua-------start
+    "Lua.telemetry.enable": false,
+    "touchsprite-extension.accessKey": "1cWROGlJjEoM5DjwA5r41nkSDPn7pd6w9Jzx7Zx1fUMJNH45t0qwUUv286N02CwJ",
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ],
+    "touchsprite-extension.snapshotDir": "/Users/rehma/ts",
+    "touchsprite-extension.snapshotOrient": "home键在下",
+    "emmylua.colors.global": "#c69",
+    "emmylua.colors.parameter": "#ebcb8b",
+    "emmylua.colors.doc_type": "#66CCFF",
+    // lua-------------end
+    // 自动切换
+    // "vim.autoSwitchInputMethod.enable": true,
+    // "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+    // "vim.autoSwitchInputMethod.obtainIMCmd": "/usr/local/bin/im-select",
+    // "vim.autoSwitchInputMethod.switchIMCmd": "/usr/local/bin/im-select {im}",
+    //----less
+    "less.compile": {
+        "compress": false, //是否压缩
+        "sourceMap": false, //是否生成map文件，有了这个可以在调试台看到less行数
+        "out": "../css/", // 是否输出css文件，false为不输出
+        "outExt": ".css", // 输出文件的后缀,小程序可以写'wxss'
+    },
+    "workbench.colorTheme": "Nord Operator Theme"
+}
