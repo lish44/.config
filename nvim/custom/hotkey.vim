@@ -64,13 +64,13 @@ nnoremap <S-TAB> :bprevious<CR>
 "===
 "===视图模式
 "===
-vnoremap <silent> i k
-vnoremap <silent> k i
-vnoremap <silent> K I
-vnoremap <silent> I 3k
-vnoremap <silent> J 3j
-vnoremap <silent> L $
-vnoremap <silent> H ^
+" vnoremap <silent> i k
+" vnoremap <silent> k i
+" vnoremap <silent> K I
+" vnoremap <silent> I 3k
+" vnoremap <silent> J 3j
+" vnoremap <silent> L $
+" vnoremap <silent> H ^
 
 
 "===

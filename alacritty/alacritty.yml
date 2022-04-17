@@ -22,7 +22,7 @@ colors:
     white: "#ECEFF4"
 
 
-window.opacity: 0.8 
+window.opacity: 0.7 
 font:
   normal:
     family: Hack Nerd font mono
@@ -36,7 +36,7 @@ font:
       #  bold_italic:
       #    family: Hack Nerd font mono
       #    style: Bold Italic
-  size: 19
+  size: 16
   offset:
     x: 1
     y: 4

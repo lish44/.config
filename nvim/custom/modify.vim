@@ -1,4 +1,9 @@
 "true/false, up/down切换
+nnoremap <silent> W :call JumpToNextWord()<CR>
+nnoremap <silent><leader>r :call CompileRunGcc()<CR>
+nnoremap <silent> tt ciw<C-r>=modify#toggleWord(@")<cr><esc>
+" xnoremap <silent> <A-t> s<C-r>=modify#toggleWord(@")<cr><esc>
+
 "NOTE lis大小写或首字母大写，全用小写，其他情况保留原大小写
 function! modify#toggleWord(word)
     let lis = [
@@ -43,6 +48,8 @@ function! modify#toggleWord(word)
                 \ ['水平', '垂直'],
                 \ ['1', '0'],
                 \ ['0', '1'],
+                \ ['public', 'private'],
+                \ ['private', 'public'],
                 \ ]
     let word = a:word
     "word前后内容
@@ -133,7 +140,6 @@ endfunction
 "     return split(s, char)
 " endfunction
 
-noremap <silent><leader>r :call CompileRunGcc()<CR>
 func! CompileRunGcc()
 	exec "w"
 	if &filetype == 'cs'
@@ -165,4 +171,3 @@ function! JumpToNextWord()
         normal w
     endwhile
 endfunction
-nnoremap <silent> W :call JumpToNextWord()<CR>

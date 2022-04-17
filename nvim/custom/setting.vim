@@ -16,7 +16,7 @@ set scrolloff=4                                 "永远保持x行
 set updatetime=100                              "响应更快
 set shortmess+=c                                "补全的时候少一些东西
 set hidden                                      "不保存可以跳转文件，作用就是保存在缓冲区中
-set cursorline                                  "显示行
+set nocursorline                                  "显示行
 set wrap                                        "tab menu设置
 set mouse=a
 set encoding=utf-8

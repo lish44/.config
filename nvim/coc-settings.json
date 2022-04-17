@@ -46,7 +46,6 @@
     "json",
     "cs",
     "py",
-    "erlang",
     "lua",
     "html",
     "css",
@@ -55,5 +54,6 @@
   ],
   "Lua.workspace.library": ["~/WorkSpace/Lua"],
   "translator.engines": ["youdao"],
-  "emmet.optimizeStylesheetParsing": true
+  "emmet.optimizeStylesheetParsing": true,
+  "Lua.telemetry.enable": true
 }
