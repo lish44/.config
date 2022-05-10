@@ -50,6 +50,8 @@ function! modify#toggleWord(word)
                 \ ['0', '1'],
                 \ ['public', 'private'],
                 \ ['private', 'public'],
+                \ ['GameObject', 'TransForm'],
+                \ ['TransForm', 'GameObject'],
                 \ ]
     let word = a:word
     "word前后内容

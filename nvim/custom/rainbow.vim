@@ -8,6 +8,9 @@ let g:rainbow_conf = {
 \		'tex': {
 \			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
 \		},
+\		'cs': {
+    \			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/','start=/{/ end=/}/'],
+\		},
 \		'lisp': {
 \			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
 \		},

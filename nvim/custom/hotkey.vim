@@ -16,12 +16,12 @@ nnoremap <leader>q q
 nnoremap Q :q!<CR>
 
 "分屏
-"nnoremap tl :set splitright<CR> :vsplit<CR>
-"nnoremap th :set nosplitright<CR>:vsplit<CR>
-"nnoremap ti :set nosplitbelow<CR>:split<CR>
-"nnoremap tj :set splitbelow<CR>:split<CR>
-"nnoremap to :only<CR>
-"nnoremap tc :tabclose<CR>
+nnoremap tl :set splitright<CR> :vsplit<CR>
+nnoremap th :set nosplitright<CR>:vsplit<CR>
+nnoremap ti :set nosplitbelow<CR>:split<CR>
+nnoremap tj :set splitbelow<CR>:split<CR>
+nnoremap to :only<CR>
+nnoremap tc :tabclose<CR>
 
 "分屏后光标切换
 nnoremap <LEADER>i <C-w>k

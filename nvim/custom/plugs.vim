@@ -2,8 +2,14 @@ call plug#begin('~/.config/nvim/plugged')
 
 "== 状态&栏主题
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'arcticicestudio/nord-vim'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'EdenEast/nightfox.nvim'
+Plug 'glepnir/spaceline.vim'
+Plug 'kyazdani42/nvim-web-devicons'
+"== tab切换动画
+Plug 'romgrk/barbar.nvim'
+
 "Plug 'flazz/vim-colorschemes'
 "== lazygit
 Plug 'kdheepak/lazygit.nvim'
@@ -29,8 +35,6 @@ Plug 'dense-analysis/ale'
 Plug 'mhinz/vim-startify'
 "== 代码主题高亮
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"== 彩虹括号
-Plug 'luochen1990/rainbow'
 
 "== 项目搜索 类似于fzf
 " Plug 'nvim-lua/plenary.nvim'
@@ -64,12 +68,8 @@ Plug 'luochen1990/rainbow'
 " Plug 'glepnir/dashboard-nvim'
 "== 滚动固定窗口
 " Plug 'antoinemadec/FixCursorHold.nvim'
-"== 图标
-" Plug 'kyazdani42/nvim-web-devicons' " for file icons
 "== 项目菜单栏
 "Plug 'kyazdani42/nvim-tree.lua'
-"== tab切换动画
-" Plug 'romgrk/barbar.nvim'
 "Plug 'unblevable/quick-scope'
 "== 项目管理器
 " Plug 'ahmedkhalf/project.nvim'
