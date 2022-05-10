@@ -2,8 +2,8 @@
   "coc.preferences.extensionUpdateCheck": "weekly",
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
-  "list.previousKeymap": "<C-p>",
-  "list.nextKeymap": "<C-n>",
+  "list.previousKeymap": "<up>",
+  "list.nextKeymap": "<down>",
   "suggest.completionItemKindLabels": {
     "class": "\uf0e8",
     "color": "\ue22b",
@@ -42,18 +42,8 @@
   "diagnostic.virtualText": false,
   "diagnostic.messageDelay": 500,
   "diagnostic.level": "information",
-  "coc.preferences.formatOnSaveFiletypes": [
-    "json",
-    "cs",
-    "py",
-    "lua",
-    "html",
-    "css",
-    "ts",
-    "js"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": ["json", "cs", "py", "lua"],
   "Lua.workspace.library": ["~/WorkSpace/Lua"],
-  "translator.engines": ["youdao"],
-  "emmet.optimizeStylesheetParsing": true,
-  "Lua.telemetry.enable": true
+  "Lua.telemetry.enable": true,
+  "translator.engines": ["youdao"]
 }

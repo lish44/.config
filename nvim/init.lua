@@ -1,0 +1,5 @@
+require('keymapping')
+require('settings')
+require('plugins')
+require('conf')
+require('vim-conf')
