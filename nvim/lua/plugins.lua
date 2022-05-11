@@ -47,6 +47,7 @@ return require('packer').startup(function()
 	use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' } -- 进入到这个插件的git目录下的app文件夹 并且执行 yarn安装命令 
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	use 'nvim-treesitter/nvim-treesitter'
+	use 'p00f/nvim-ts-rainbow'
 	-- use 'OmniSharp/omnisharp-vim'
 
 	-- 补全
@@ -75,12 +76,7 @@ return require('packer').startup(function()
 	use { "akinsho/toggleterm.nvim" }
 
 	--注释
-	use {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
+	use 'numToStr/Comment.nvim'
 
 	use {
 		'akinsho/bufferline.nvim',
@@ -96,8 +92,8 @@ return require('packer').startup(function()
 	use 'junegunn/fzf.vim'
 
 	-- 括号配对
-	-- use{
-	-- "windwp/nvim-autopairs",
+	-- use {
+	-- 	"windwp/nvim-autopairs",
 	-- 	config = function()
 	-- 		require('nvim-autopairs').setup()
 	-- 	end
@@ -129,3 +125,12 @@ return require('packer').startup(function()
 
 	-- use 'mhartington/formatter.nvim'
 end)
+
+-- {
+--     ignore = function()
+--         -- Only ignore empty lines for lua files
+--         if vim.bo.filetype == 'lua' then
+--             return '^$'
+--         end
+--     end,
+-- }

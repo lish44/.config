@@ -1,5 +1,4 @@
-let g:coc_global_extensions = ['coc-vimlsp', 'coc-translator', 'coc-snippets',  'coc-marketplace',  'coc-explorer',  'coc-json', 'coc-sumneko-lua', 'coc-prettier', 'coc-emmet', 'coc-pyright']
-" 'coc-omnisharp',
+let g:coc_global_extensions = ['coc-vimlsp', 'coc-translator', 'coc-snippets',  'coc-marketplace',  'coc-explorer',  'coc-json', 'coc-sumneko-lua', 'coc-prettier', 'coc-pyright', 'coc-pairs']
 "tab补全
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :

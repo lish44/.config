@@ -8,7 +8,8 @@ M.setup = function()
 	local unload_plugins = {
 		"init", -- we don't need to load init again
 		'autosave',
-		'lspconfig'
+		'lspconfig',
+		'cmp',
 	}
 
 	local helper_set = {} -- forget cache list
@@ -26,7 +27,7 @@ M.setup = function()
 				local file = 'conf/' .. cut_suffix_fname
 				local status_ok, _ = pcall(require, file)
 				if not status_ok then
-					vim.notify('<Failed loading> -> ' .. fname, vim.log.levels.ERROR)
+					vim.notify('【Failed loading】-> ' .. fname, vim.log.levels.ERROR)
 				end
 			end
 		end
