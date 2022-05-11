@@ -6,7 +6,7 @@ M.setup = function()
 
 	local unload_plugins = {
 		"init.lua", -- we don't need to load init again
-		"omnisharp-vim.vim",
+		-- "omnisharp-vim.vim",
 	}
 
 	local helper_set = {} -- forget cache list

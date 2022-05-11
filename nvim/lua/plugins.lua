@@ -48,7 +48,7 @@ return require('packer').startup(function()
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'p00f/nvim-ts-rainbow'
-	-- use 'OmniSharp/omnisharp-vim'
+	use 'OmniSharp/omnisharp-vim'
 
 	-- 补全
 	-- use 'hrsh7th/nvim-cmp' -- Autocompletion plugin 自动补全
@@ -88,7 +88,7 @@ return require('packer').startup(function()
 
 	-- 名字替换
 	-- use 'glepnir/lspsaga.nvim'
-	-- use 'kdheepak/lazygit.nvim'
+	use 'kdheepak/lazygit.nvim'
 	use 'junegunn/fzf.vim'
 
 	-- 括号配对
