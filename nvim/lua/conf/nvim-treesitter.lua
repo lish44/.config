@@ -1,7 +1,6 @@
 require 'nvim-treesitter.configs'.setup {
 	-- 支持那些语言可以TSInstallInfo看
-	ensure_installed = { "lua", "python" },
-	-- ensure_installed = { "lua", "c_sharp", "python" },
+	ensure_installed = { "lua", "python", "vim", "c_sharp", "json", "markdown" },
 	sync_install = true,
 	-- ignore_install = { "javascript" },
 

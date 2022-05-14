@@ -1,5 +1,4 @@
 let g:OmniSharp_server_use_mono = 1
-" let g:OmniSharp_server_path = '/Users/rehma/.cache/omnisharp-vim/omnisharp-roslyn/run'
 " let g:OmniSharp_server_path = '/Users/rehma/.cache/omnisharp-vim/omnisharp-roslyn-v1.38.2/OmniSharp.exe'
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf
 let g:OmniSharp_selector_findusages = 'fzf'

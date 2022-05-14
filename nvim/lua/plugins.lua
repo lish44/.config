@@ -50,6 +50,7 @@ return require('packer').startup(function()
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'p00f/nvim-ts-rainbow'
 	use 'OmniSharp/omnisharp-vim'
+	-- use 'kevinhwang91/rnvimr'
 
 	-- 补全
 	-- use 'hrsh7th/nvim-cmp' -- Autocompletion plugin 自动补全
