@@ -44,7 +44,8 @@ return require('packer').startup(function()
 	use 'nvim-lua/plenary.nvim'
 	use 'nvim-lua/popup.nvim'
 	use 'vimwiki/vimwiki'
-	use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' } -- 进入到这个插件的git目录下的app文件夹 并且执行 yarn安装命令 
+	-- use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' } -- 进入到这个插件的git目录下的app文件夹 并且执行 yarn安装命令
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'p00f/nvim-ts-rainbow'

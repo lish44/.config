@@ -146,8 +146,8 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term python3 %
-	elseif &filetype == 'markdown'
-		exec "InstantMarkdownPreview"
+	elseif &filetype == 'markdown' || &filetype == 'vimwiki'
+		exec "MarkdownPreview"
 	elseif &filetype == 'lua'
 		set splitbelow
 		:sp
