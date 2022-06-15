@@ -44,7 +44,8 @@
   "diagnostic.level": "information",
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
-    "cs",
+    "go",
+    "csharp",
     "py",
     "lua",
     "cpp",

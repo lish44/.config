@@ -45,11 +45,16 @@ return require('packer').startup(function()
 	use 'nvim-lua/popup.nvim'
 	use 'vimwiki/vimwiki'
 	-- use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install', cmd = 'MarkdownPreview' } -- 进入到这个插件的git目录下的app文件夹 并且执行 yarn安装命令
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+		setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'p00f/nvim-ts-rainbow'
 	use 'OmniSharp/omnisharp-vim'
+
+	use 'tpope/vim-surround'
+	use 'easymotion/vim-easymotion'
+	use 'tpope/vim-repeat'
 	-- use 'kevinhwang91/rnvimr'
 
 	-- 补全
@@ -70,9 +75,10 @@ return require('packer').startup(function()
 	-- use 'williamboman/nvim-lsp-installer'
 
 	-- theme
-	use 'EdenEast/nightfox.nvim'
+	-- use 'EdenEast/nightfox.nvim'
 	use 'glepnir/spaceline.vim'
 	use 'kyazdani42/nvim-web-devicons'
+	use 'arcticicestudio/nord-vim'
 
 	-- term
 	use { "akinsho/toggleterm.nvim" }

@@ -3,6 +3,7 @@ let g:OmniSharp_server_use_mono = 1
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf
 let g:OmniSharp_selector_findusages = 'fzf'
 let g:OmniSharp_highlighting = 0
+let g:OmniSharp_server_use_net6 = 1
 sign define OmniSharpCodeActions text=!!
 
 set completeopt=longest,menuone,preview

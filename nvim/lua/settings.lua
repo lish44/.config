@@ -11,7 +11,7 @@ vim.g.encoding = "UTF-8"
 vim.wo.signcolumn = "yes" -- 显示左侧图标指示列
 
 local options = {
-	guifont = "Menlo:h15", --字体
+	-- guifont = "Menlo:h15", --字体//term下字体跟随term
 	pumheight = 10, --弹出菜单更小 补全最多显示10行
 	autoread = true, --文件被外部改动后, 自动加载
 	number = true,
@@ -46,7 +46,7 @@ local options = {
 	autoindent = true, -- 新行对齐当前行
 	smartindent = true,
 	termguicolors = true,
-	whichwrap = 'b,s,<,>,[,],h,l', -- 行结尾可以跳到下一行
+	-- whichwrap = 'b,s,<,>,[,],h,l', -- 行结尾可以跳到下一行
 	timeoutlen = 500, -- 设置 timeoutlen 为等待键盘快捷键连击时间500毫秒
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
 	-- iskeyword = "-"			--使破折号为文本对象

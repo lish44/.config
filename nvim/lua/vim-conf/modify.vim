@@ -154,6 +154,10 @@ func! CompileRunGcc()
 		:term lua %
     elseif &filetype == 'html'
 		silent! exec "!".g:mkdp_browser." % &"
+    elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run %
 	endif
 endfunc
 

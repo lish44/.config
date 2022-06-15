@@ -108,10 +108,10 @@ _G.packer_plugins = {
     path = "/Users/rehma/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
-  ["nightfox.nvim"] = {
+  ["nord-vim"] = {
     loaded = true,
-    path = "/Users/rehma/.local/share/nvim/site/pack/packer/start/nightfox.nvim",
-    url = "https://github.com/EdenEast/nightfox.nvim"
+    path = "/Users/rehma/.local/share/nvim/site/pack/packer/start/nord-vim",
+    url = "https://github.com/arcticicestudio/nord-vim"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -182,6 +182,21 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/rehma/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
+  },
+  ["vim-easymotion"] = {
+    loaded = true,
+    path = "/Users/rehma/.local/share/nvim/site/pack/packer/start/vim-easymotion",
+    url = "https://github.com/easymotion/vim-easymotion"
+  },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/Users/rehma/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/Users/rehma/.local/share/nvim/site/pack/packer/start/vim-surround",
+    url = "https://github.com/tpope/vim-surround"
   },
   vimwiki = {
     loaded = true,

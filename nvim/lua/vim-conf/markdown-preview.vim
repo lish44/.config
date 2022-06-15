@@ -11,7 +11,7 @@ autocmd Filetype markdown inoremap ,s ~~~~ <++><Esc>F~hi
 " 斜体
 autocmd Filetype markdown inoremap ,i ** <++><Esc>F*i
 autocmd Filetype markdown inoremap ,d `` <++><Esc>F`i
-autocmd Filetype markdown inoremap ,c ```Csharp<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+autocmd Filetype markdown inoremap ,c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
 autocmd Filetype markdown inoremap ,p ![](../pic/<++>) <++><Esc>F[a
 autocmd Filetype markdown inoremap ,a [](<++>) <++><Esc>F[a
 autocmd Filetype markdown inoremap ,l --------<Enter>
