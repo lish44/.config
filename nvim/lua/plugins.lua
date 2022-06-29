@@ -55,6 +55,10 @@ return require('packer').startup(function()
 	use 'tpope/vim-surround'
 	use 'easymotion/vim-easymotion'
 	use 'tpope/vim-repeat'
+
+	use 'fatih/vim-go'
+
+	use 'preservim/tagbar'
 	-- use 'kevinhwang91/rnvimr'
 
 	-- 补全
@@ -100,12 +104,7 @@ return require('packer').startup(function()
 	use 'junegunn/fzf.vim'
 
 	-- 括号配对
-	-- use {
-	-- 	"windwp/nvim-autopairs",
-	-- 	config = function()
-	-- 		require('nvim-autopairs').setup()
-	-- 	end
-	-- }
+	use 'jiangmiao/auto-pairs'
 
 	-- git
 	use {
