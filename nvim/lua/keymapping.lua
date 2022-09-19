@@ -25,7 +25,8 @@ map('n', '<c-s>', ':w<cr>', opt)
 map('n', '<leader>q', 'q', opt)
 
 -- move
-map('n', 'i', 'k', opt)
+map('n', 'j', 'gj', opt)
+map('n', 'i', 'gk', opt)
 map('n', 'k', 'i', opt)
 map('n', 'K', 'I', opt)
 map('n', 'H', '^', opt)
@@ -95,9 +96,10 @@ end, { expr = true })
 
 
 -- plugins
-map("n", "<C-t>", ":Telescope find_files<CR>", opt)
+-- map("n", "<C-t>", ":Telescope find_files<CR>", opt)
 -- map('n', '<c-l>', '<CMD> LazyGit<CR>', opt)
-map("n", "<c-g>",
-	"<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", opt)
-map("n", "<c-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<c-l>", ":BufferLineCycleNext<CR>", opt)
+-- map("n", "<c-g>","<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", opt)
+-- map("n", "<c-h>", ":BufferLineCyclePrev<CR>", opt)
+-- map("n", "<c-l>", ":BufferLineCycleNext<CR>", opt)
+
+map('n', '<leader>t', ':NvimTreeToggle<CR>', opt)

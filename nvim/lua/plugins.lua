@@ -58,6 +58,10 @@ return require('packer').startup(function()
 
 	use 'fatih/vim-go'
 
+	-- 文件管理器
+	use 'kyazdani42/nvim-tree.lua'
+
+	-- use 'ybian/smartim'
 	use 'preservim/tagbar'
 	-- use 'kevinhwang91/rnvimr'
 
@@ -115,15 +119,15 @@ return require('packer').startup(function()
 	}
 
 	--telescope
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = {
-			{ "nvim-telescope/telescope-live-grep-raw.nvim" },
-			{ "nvim-telescope/telescope-ui-select.nvim" },
-			{ "nvim-telescope/telescope-dap.nvim" },
-			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
-		},
-	}
+	-- use {
+	-- 	'nvim-telescope/telescope.nvim',
+	-- 	requires = {
+	-- 		{ "nvim-telescope/telescope-live-grep-raw.nvim" },
+	-- 		{ "nvim-telescope/telescope-ui-select.nvim" },
+	-- 		{ "nvim-telescope/telescope-dap.nvim" },
+	-- 		{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+	-- 	},
+	-- }
 
 	-- use "MattesGroeger/vim-bookmarks"
 	-- use "tom-anders/telescope-vim-bookmarks.nvim"

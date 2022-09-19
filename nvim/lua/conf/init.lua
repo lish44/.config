@@ -10,6 +10,7 @@ M.setup = function()
 		'autosave',
 		'lspconfig',
 		'cmp',
+		'telescope',
 	}
 
 	local helper_set = {} -- forget cache list
