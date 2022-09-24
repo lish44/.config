@@ -1,0 +1,12 @@
+map i scrollUp
+map k enterInsertMode
+map <s-tab> nextTab
+map <tab> previousTab
+map [ previousTab
+map ] nextTab
+map U scrollFullPageUp
+map D scrollFullPageDown
+map s scrollDown
+map w scrollUp
+map e scrollPageUp
+map E scrollFullPageUp
