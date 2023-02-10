@@ -70,6 +70,8 @@ selection:
 
 live_config_reload: true
 
+shell_command: ["zsh", "-l", "-i"]
+
 tabspaces: 4
 use_thin_strokes: true
 key_bindings:

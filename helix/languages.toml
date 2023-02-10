@@ -1,0 +1,7 @@
+
+[[language]]
+name = "lua"
+auto-format = false
+language-server = { command = "lua-language-server", args = ["--stdio"] }
+[[language]]
+name = "python"

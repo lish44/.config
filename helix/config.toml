@@ -1,0 +1,22 @@
+theme = "nord"
+
+[editor]
+line-number = "absolute"
+mouse = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+C-s = ":w" 
+i = "move_line_up"
+k = "insert_mode"
+K = "insert_at_line_start"
+H = "goto_line_start"
+L = "goto_line_end"
+[keys.insert]
+j = { j = "normal_mode" }
+[keys.select]
+i = "move_line_up"

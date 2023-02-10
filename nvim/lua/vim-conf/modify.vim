@@ -158,6 +158,10 @@ func! CompileRunGcc()
 		set splitbelow
 		:sp
 		:term go run %
+    elseif &filetype == 'sh'
+		set splitbelow
+		:sp
+		:term bash %
 	endif
 endfunc
 

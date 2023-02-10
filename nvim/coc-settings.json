@@ -49,7 +49,9 @@
     "py",
     "lua",
     "cpp",
-    "c"
+    "c",
+    "sh",
+    "shell"
   ],
   "Lua.workspace.library": ["~/WorkSpace/Lua"],
   "Lua.telemetry.enable": true,

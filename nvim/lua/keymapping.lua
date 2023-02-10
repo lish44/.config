@@ -103,3 +103,4 @@ end, { expr = true })
 -- map("n", "<c-l>", ":BufferLineCycleNext<CR>", opt)
 
 map('n', '<leader>t', ':NvimTreeToggle<CR>', opt)
+map('n', '<g-t>', ':GoImplements<CR>', opt)
